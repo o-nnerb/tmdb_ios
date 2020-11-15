@@ -532,24 +532,24 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.1;
+				kind = exactVersion;
+				version = 5.1.1;
 			};
 		};
 		0C16BE3225602384006EEBCB /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 14.0.0;
+				kind = exactVersion;
+				version = 14.0.0;
 			};
 		};
 		0C85178925601F63007597B9 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:SDWebImage/SDWebImage.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.9.5;
+				kind = exactVersion;
+				version = 5.9.5;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
