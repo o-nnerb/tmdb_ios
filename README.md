@@ -1,5 +1,9 @@
 # TMDb Index
 
+⚠️ Under development
+
+This is following the medium [https://onnerb.medium.com/architecture-of-a-super-app-swiftui-f3764d924f80](article)
+
 It is an iOS app that allows user to check the upcoming movies from TMDb and see some informations about it.
 
 ## Screenshots
