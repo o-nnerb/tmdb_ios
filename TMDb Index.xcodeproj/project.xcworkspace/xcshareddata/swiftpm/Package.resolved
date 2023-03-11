@@ -12,10 +12,10 @@
     {
       "identity" : "request-dl",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/request-dl/request-dl.git",
+      "location" : "https://github.com/brennobemoura/request-dl.git",
       "state" : {
-        "revision" : "e7cd5449a72db2419690dc9a690346d361d60a76",
-        "version" : "1.0.0-test"
+        "revision" : "5281d191fe6d5bad713d93a49d5dced84530ade2",
+        "version" : "1.0.0"
       }
     }
   ],

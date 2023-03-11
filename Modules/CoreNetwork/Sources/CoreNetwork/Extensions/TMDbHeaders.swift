@@ -8,9 +8,9 @@
 import Foundation
 import RequestDL
 
-struct TMDbHeaders: Request {
+struct TMDbHeaders: Property {
 
-    var body: some Request {
+    var body: some Property {
         Headers.Accept(.json)
         Headers.ContentType(.json)
         BaseURL("api.themoviedb.org")

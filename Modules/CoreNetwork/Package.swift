@@ -18,8 +18,8 @@ let package = Package(
         .package(path: "../CoreKit"),
         .package(path: "../DataKit"),
         .package(
-            url: "https://github.com/request-dl/request-dl.git",
-            from: "1.0.0-alpha.2"
+            url: "https://github.com/brennobemoura/request-dl.git",
+            from: "1.0.0"
         )
     ],
     targets: [

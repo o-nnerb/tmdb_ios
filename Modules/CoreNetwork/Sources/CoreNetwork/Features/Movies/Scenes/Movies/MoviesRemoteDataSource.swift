@@ -21,20 +21,20 @@ extension MoviesRemoteDataSource: DataKit.MoviesRemoteDataSource {
         try await DataTask {
             TMDbHeaders()
             Path("genre/movie/list")
-            Method(.get)
+            RequestMethod(.get)
         }
         .logInConsole(.debugEnabled)
         .keyPath(\.results)
         .decode([GenreResponseDTO].self)
-        .ignoreResponse()
-        .response()
+        .extractPayload()
+        .result()
     }
 
     public func getMovie(_ id: Int) async throws -> MovieDetailResponseDTO {
         try await DataTask {
             TMDbHeaders()
             Path("movie/\(id)")
-            Method(.get)
+            RequestMethod(.get)
         }
         .logInConsole(.debugEnabled)
         .decode(MovieDetailResponseDTO.self, decoder: .default)
@@ -46,8 +46,8 @@ extension MoviesRemoteDataSource: DataKit.MoviesRemoteDataSource {
                 print(error)
             }
         }
-        .ignoreResponse()
-        .response()
+        .extractPayload()
+        .result()
     }
 
     public func getMovies(at page: Int) async throws -> [MovieResponseDTO] {
@@ -55,13 +55,13 @@ extension MoviesRemoteDataSource: DataKit.MoviesRemoteDataSource {
             TMDbHeaders()
             Path("movie/upcoming")
             Query(page, forKey: "page")
-            Method(.get)
+            RequestMethod(.get)
         }
         .logInConsole(.debugEnabled)
         .keyPath(\.results)
         .decode([MovieResponseDTO].self, decoder: .default)
-        .ignoreResponse()
-        .response()
+        .extractPayload()
+        .result()
     }
 
     public func getPhoto(for path: String) async throws -> Data {
@@ -69,10 +69,10 @@ extension MoviesRemoteDataSource: DataKit.MoviesRemoteDataSource {
             BaseURL("image.tmdb.org")
             Path("t/p/w500\(path)")
             Headers.Accept(.png)
-            Method(.get)
+            RequestMethod(.get)
         }
         .logInConsole(.debugEnabled)
-        .ignoreResponse()
-        .response()
+        .extractPayload()
+        .result()
     }
 }
