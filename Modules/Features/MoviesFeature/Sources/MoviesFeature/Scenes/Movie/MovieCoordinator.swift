@@ -11,6 +11,7 @@ import CoreApp
 import CoreScene
 import Injection
 import CoreKit
+import ComposableArchitecture
 
 @MainActor
 struct MovieCoordinator: Coordinator {
@@ -25,9 +26,9 @@ struct MovieCoordinator: Coordinator {
     }
 
     var body: some View {
-        ViewModelConnection(scene, MovieViewModel.init) { viewModel in
-            MovieView(viewModel: viewModel)
-                .onReceive(viewModel.$destination) {
+        WithViewStore(scene.store) {
+            MovieView(viewStore: $0)
+                .onChange(of: $0.destination) {
                     switch $0 {
                     case .back:
                         backScene()
@@ -48,6 +49,8 @@ private extension MovieCoordinator {
     }
 
     func errorAction(_ error: Error) {
-        sceneAction(ErrorAction(error, at: .navigation(navigationAction)))
+        sceneAction(ErrorSceneAction(
+            AppFeatureScene.Error(error, at: .navigation(navigationAction))
+        ))
     }
 }

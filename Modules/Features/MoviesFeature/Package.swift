@@ -20,6 +20,10 @@ let package = Package(
         .package(
             url: "https://github.com/brennobemoura/navigation-kit.git",
             from: "1.0.0-alpha"
+        ),
+        .package(
+            url: "https://github.com/pointfreeco/swift-composable-architecture.git",
+            from: "0.52.0"
         )
     ],
     targets: [
@@ -30,7 +34,8 @@ let package = Package(
                 "CoreApp",
                 "CoreKit",
                 "CoreScene",
-                .product(name: "NavigationKit", package: "navigation-kit")
+                .product(name: "NavigationKit", package: "navigation-kit"),
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
         )
     ]

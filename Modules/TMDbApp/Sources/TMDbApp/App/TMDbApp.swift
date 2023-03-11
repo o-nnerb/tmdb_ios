@@ -9,23 +9,14 @@ import SwiftUI
 import CoreApp
 import CoreScene
 
-@MainActor
-public struct TMDbApp: View {
+public enum TMDbApp {
 
-    public init() {
+    public static func start() {
         Assembler.run([
             CoreKitAssembly(),
             DataKitAssembly(),
             CoreNetworkAssembly(),
             CoreStorageAssembly()
         ])
-    }
-
-    public var body: some View {
-        ContentView()
-            .modifier(ResolverModifier())
-            .modifierResolver(for: CoreScene.FeatureModifiers.self) {
-                FeaturesModifier()
-            }
     }
 }

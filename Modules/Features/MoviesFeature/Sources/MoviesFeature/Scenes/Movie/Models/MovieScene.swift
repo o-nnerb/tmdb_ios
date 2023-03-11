@@ -9,7 +9,18 @@ import Foundation
 import CoreApp
 import CoreKit
 import CoreScene
+import ComposableArchitecture
 
 struct MovieScene: Hashable {
     let movie: MovieResponse
+}
+
+extension MovieScene {
+
+    var store: Store<MovieReducer.State, MovieReducer.Action> {
+        .init(
+            initialState: .init(self),
+            reducer: MovieReducer()
+        )
+    }
 }

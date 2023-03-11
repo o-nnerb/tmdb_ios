@@ -1,26 +1,25 @@
 //
-//  File.swift
+//  MoviesFeatureDescriptor.swift
 //  
 //
 //  Created by Brenno on 24/02/23.
 //
 
 import SwiftUI
-import CoreScene
 import NavigationKit
+import CoreScene
 
 public struct MoviesFeatureDescriptor: FeatureDescriptor {
 
-    private let scene: MoviesFeatureScene
+    public init() {}
 
-    public init(_ scene: MoviesFeatureScene) {
-        self.scene = scene
-    }
-
-    public var body: some View {
-        switch scene {
-        case .movies(let scene):
-            MoviesCoordinator(scene)
-        }
+    public func body(content: Content) -> some View {
+        content
+            .navigationDestination(for: MovieScene.self) {
+                MovieCoordinator($0)
+            }
+            .navigationDestination(for: MoviesScene.self) {
+                MoviesCoordinator($0)
+            }
     }
 }

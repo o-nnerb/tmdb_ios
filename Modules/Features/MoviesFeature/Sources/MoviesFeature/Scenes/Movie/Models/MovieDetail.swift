@@ -8,7 +8,7 @@
 import Foundation
 import CoreKit
 
-struct MovieDetail {
+struct MovieDetail: Hashable {
 
     private let origin: Origin
 
@@ -23,7 +23,7 @@ struct MovieDetail {
 
 extension MovieDetail {
 
-    enum Origin {
+    enum Origin: Hashable {
         case detail(MovieDetailResponse)
         case resumed(MovieResponse)
     }

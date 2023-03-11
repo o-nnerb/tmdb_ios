@@ -10,99 +10,147 @@ import CoreApp
 import CoreKit
 import Injection
 import CoreScene
+import ComposableArchitecture
 
-class MovieViewModel: ViewModel<MovieDestination> {
+struct MovieReducer: ReducerProtocol {
 
     @Injected var getMovieUseCase: GetMovieUseCaseProtocol
     @Injected var getPhotoUseCase: GetPhotoUseCaseProtocol
 
-    @Published var movie: MovieDetail
-    @Published var poster: CGImage?
-    @Published var backdrop: CGImage?
+    struct State: Hashable {
+        var movie: MovieDetail
+        var poster: CGImage?
+        var backdrop: CGImage?
+        var destination: MovieDestination?
 
-    @Published var isMovieLoading: Bool = false
-    @Published var isPosterLoading: Bool = false
-    @Published var isBackdropLoading: Bool = false
+        var isMovieLoading: Bool = false
+        var isPosterLoading: Bool = false
+        var isBackdropLoading: Bool = false
+    }
+
+    enum Action {
+        // MARK: - Load data
+        case loadDetail
+        case loadPoster
+        case loadBackdrop
+
+        // MARK: - Post changes
+        case movie(MovieDetail)
+        case poster(CGImage?)
+        case backdrop(CGImage?)
+
+        // MARK: - Destination
+        case back
+        case error(Error)
+    }
+
+    private enum MovieID {}
+    private enum PosterID {}
+    private enum BackdropID {}
+
+    var body: some ReducerProtocol<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .loadDetail:
+                state.isMovieLoading = true
+
+                return .task { [movie = state.movie] in
+                    await loadDetail(movie)
+                }.cancellable(id: MovieID.self, cancelInFlight: true)
+
+            case .loadPoster:
+                guard
+                    state.poster == nil,
+                    let posterPath = state.movie.posterPath,
+                    !state.isPosterLoading
+                else { return  .none }
+
+                state.isPosterLoading = true
+
+                return .task {
+                    await loadPoster(posterPath)
+                }.cancellable(id: PosterID.self, cancelInFlight: true)
+
+            case .loadBackdrop:
+                guard
+                    state.poster == nil,
+                    let backdropPath = state.movie.backdropPath,
+                    !state.isBackdropLoading
+                else { return  .none }
+
+                state.isBackdropLoading = true
+
+                return .task {
+                    await loadBackdrop(backdropPath)
+                }.cancellable(id: BackdropID.self, cancelInFlight: true)
+
+            case .movie(let movie):
+                state.movie = movie
+                state.isMovieLoading = false
+
+                return .concatenate(
+                    .send(.loadPoster),
+                    .send(.loadBackdrop)
+                )
+
+            case .poster(let poster):
+                state.poster = poster
+                state.isPosterLoading = false
+
+            case .backdrop(let backdrop):
+                state.backdrop = backdrop
+                state.isBackdropLoading = false
+
+            case .error(let error):
+                state.destination = .error(error)
+
+            case .back:
+                state.destination = .back
+            }
+
+            return .none
+        }
+    }
+}
+
+extension MovieReducer.State {
 
     init(_ scene: MovieScene) {
         self.movie = .init(scene.movie)
-        super.init()
     }
 }
 
-extension MovieViewModel: MovieViewModelling {
+extension MovieReducer {
 
-    func back() {
-        destination = .back
+    func loadDetail(_ movie: MovieDetail) async -> MovieReducer.Action {
+        do {
+            let movie = try await getMovieUseCase(movie.id)
+            return .movie(.init(movie))
+        } catch {
+            return .error(error)
+        }
     }
 
-    func loadData() {
-        loadPoster()
-        loadBackdrop()
+    func loadPoster(_ posterPath: String) async -> MovieReducer.Action {
+        do {
+            let data = try await getPhotoUseCase(posterPath)
+            return .poster(getImage(from: data))
+        } catch {
+            return .poster(nil)
+        }
+    }
 
-        Task {
-            isMovieLoading = true
-
-            do {
-                let movie = try await getMovieUseCase(movie.id)
-                self.movie = .init(movie)
-                loadPoster()
-                loadBackdrop()
-            } catch {
-                destination = .error(error)
-            }
-
-            isMovieLoading = false
+    func loadBackdrop(_ backdropPath: String) async -> MovieReducer.Action {
+        do {
+            let data = try await getPhotoUseCase(backdropPath)
+            return .backdrop(getImage(from: data))
+        } catch {
+            return .backdrop(nil)
         }
     }
 }
 
-extension MovieViewModel {
-    
-    func loadPoster() {
-        guard
-            poster == nil,
-            let posterPath = movie.posterPath,
-            !isPosterLoading
-        else { return }
-
-        Task {
-            isPosterLoading = true
-
-            do {
-                let data = try await getPhotoUseCase(posterPath)
-                poster = getImage(from: data)
-            } catch {
-                poster = nil
-            }
-
-            isPosterLoading = false
-        }
-    }
-    
-    func loadBackdrop() {
-        guard
-            backdrop == nil,
-            let backdropPath = movie.backdropPath,
-            !isBackdropLoading
-        else { return }
-
-        Task {
-            isBackdropLoading = true
-
-            do {
-                let data = try await getPhotoUseCase(backdropPath)
-                backdrop = getImage(from: data)
-            } catch {
-                backdrop = nil
-            }
-
-            isBackdropLoading = false
-        }
-    }
-}
-
-extension MovieViewModel {
+extension MovieReducer {
 
     func getImage(from data: Data) -> CGImage? {
         guard let ciImage = CIImage(data: data) else {

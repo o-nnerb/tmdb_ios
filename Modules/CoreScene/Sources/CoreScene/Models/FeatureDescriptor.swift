@@ -9,26 +9,8 @@ import SwiftUI
 import NavigationKit
 
 @MainActor
-public protocol FeatureDescriptor: View {
+public protocol FeatureDescriptor: ViewModifier {
 
-    associatedtype Scene: Hashable
-
-    associatedtype Destinations: FeatureDescriptorDestinations
-
-    init(_ scene: Scene)
+    init()
 }
 
-@MainActor
-extension View {
-
-    @ViewBuilder
-    public func featureDescriptor<Descriptor: FeatureDescriptor>(
-        _ descriptor: Descriptor.Type
-    ) -> some View {
-        self
-            .modifier(Descriptor.Destinations())
-            .navigationDestination(for: Descriptor.Scene.self) {
-                Descriptor($0)
-            }
-    }
-}

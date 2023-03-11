@@ -44,7 +44,9 @@ struct MoviesCoordinator: Coordinator {
 private extension MoviesCoordinator {
 
     func errorAction(_ error: Error) {
-        sceneAction(ErrorAction(error))
+        sceneAction(ErrorSceneAction(
+            AppFeatureScene.Error(error, at: .navigation(navigationAction))
+        ))
     }
 
     func submitScene(_ movie: MovieResponse) {

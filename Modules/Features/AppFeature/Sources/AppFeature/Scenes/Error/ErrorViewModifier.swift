@@ -1,29 +1,26 @@
 //
-//  ErrorCoordinator.swift
+//  File.swift
 //  
 //
-//  Created by Brenno Giovanini de Moura on 03/11/22.
+//  Created by Brenno on 11/03/23.
 //
 
 import SwiftUI
-import CoreApp
-import CoreKit
 import CoreScene
-import Injection
+import NavigationKit
+import CoreApp
 
-struct ErrorModifier: ViewModifier {
+struct ErrorViewModifier: ViewModifier {
 
-    @Environment(\.sceneAction) var sceneAction
-
-    @Binding var action: ErrorAction?
     @State var isPresenting: Bool = false
+    @State var action: ErrorSceneAction?
 
     func body(content: Content) -> some View {
         content
             .alert(
                 "Error",
                 isPresented: $isPresenting,
-                presenting: action?.error,
+                presenting: action?.scene.error,
                 actions: { _ in
                     Button("Ok") {}
                 },
@@ -31,6 +28,9 @@ struct ErrorModifier: ViewModifier {
                     Text($0.localizedDescription)
                 }
             )
+            .sceneAction(for: ErrorSceneAction.self) {
+                action = $0
+            }
             .onChange(of: isPresenting) {
                 if !$0 {
                     action = nil

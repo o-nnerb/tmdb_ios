@@ -3,51 +3,37 @@
 
 import PackageDescription
 
-let cores = [
-    "Injection",
-    "CoreApp",
-    "CoreKit",
-    "DataKit",
-    "CoreNetwork",
-    "CoreStorage"
-]
-
-let features = [
-    "AppFeature",
-    "MoviesFeature"
-]
-
 let package = Package(
-    name: "TMDbApp",
+    name: "AppFeature",
     platforms: [.iOS(.v16), .watchOS(.v9), .tvOS(.v16), .macOS(.v13)],
     products: [
         .library(
-            name: "TMDbApp",
-            targets: ["TMDbApp"]
+            name: "AppFeature",
+            targets: ["AppFeature"]
         )
     ],
-    dependencies: cores.map {
-        .package(path: "../\($0)")
-    } + features.map {
-        .package(path: "../Features/\($0)")
-    } + [
+    dependencies: [
+        .package(path: "../../Injection"),
+        .package(path: "../../CoreApp"),
+        .package(path: "../../CoreKit"),
+        .package(path: "../../CoreScene"),
         .package(
             url: "https://github.com/brennobemoura/navigation-kit.git",
             from: "1.0.0-alpha"
         ),
         .package(
-            url: "https://github.com/pointfreeco/swift-composable-architecture.git",
+            url: "git@github.com:pointfreeco/swift-composable-architecture.git",
             from: "0.52.0"
         )
     ],
     targets: [
         .target(
-            name: "TMDbApp",
-            dependencies: cores.map {
-                .product(name: $0, package: $0)
-            } + features.map {
-                .product(name: $0, package: $0)
-            } + [
+            name: "AppFeature",
+            dependencies: [
+                "Injection",
+                "CoreApp",
+                "CoreKit",
+                "CoreScene",
                 .product(name: "NavigationKit", package: "navigation-kit"),
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]

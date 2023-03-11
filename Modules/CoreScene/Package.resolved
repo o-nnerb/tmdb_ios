@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "navigation-kit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brennobemoura/navigation-kit.git",
+      "state" : {
+        "revision" : "aa400622123a0df510549f2c59faa60e03402a5c",
+        "version" : "1.0.0-alpha"
+      }
+    }
+  ],
+  "version" : 2
+}

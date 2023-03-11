@@ -6,19 +6,20 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @MainActor
-struct MovieView<ViewModel: MovieViewModelling>: View {
+struct MovieView: View {
 
-    @ObservedObject var viewModel: ViewModel
+    let viewStore: ViewStoreOf<MovieReducer>
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 LazyImage(
-                    image: viewModel.backdrop,
+                    image: viewStore.backdrop,
                     label: Text("Backdrop image"),
-                    isLoading: viewModel.isBackdropLoading
+                    isLoading: viewStore.isBackdropLoading
                 )
                 .scaledToFill()
                 .frame(height: 200)
@@ -27,9 +28,9 @@ struct MovieView<ViewModel: MovieViewModelling>: View {
                 VStack(spacing: 16) {
                     HStack(spacing: 8) {
                         LazyImage(
-                            image: viewModel.poster,
+                            image: viewStore.poster,
                             label: Text("Poster image"),
-                            isLoading: viewModel.isPosterLoading
+                            isLoading: viewStore.isPosterLoading
                         )
                         .scaledToFill()
                         .frame(width: 88, height: 128)
@@ -37,9 +38,9 @@ struct MovieView<ViewModel: MovieViewModelling>: View {
 
                         HStack(spacing: .zero) {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text(viewModel.movie.name)
+                                Text(viewStore.movie.name)
 
-                                if let genre = viewModel.movie.genre {
+                                if let genre = viewStore.movie.genre {
                                     Text(genre)
                                 }
 
@@ -49,9 +50,9 @@ struct MovieView<ViewModel: MovieViewModelling>: View {
                                         .scaledToFit()
                                         .frame(width: 16, height: 16)
 
-                                    Text("\(Int(viewModel.movie.votesAverage))%")
+                                    Text("\(Int(viewStore.movie.votesAverage))%")
 
-                                    Text("(\(viewModel.movie.votesCount))")
+                                    Text("(\(viewStore.movie.votesCount))")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
@@ -63,7 +64,7 @@ struct MovieView<ViewModel: MovieViewModelling>: View {
                         }
                     }
 
-                    if let overview = viewModel.movie.overview {
+                    if let overview = viewStore.movie.overview {
                         HStack(spacing: .zero) {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Overview")
@@ -76,7 +77,7 @@ struct MovieView<ViewModel: MovieViewModelling>: View {
                         }
                     }
 
-                    if let companies = viewModel.movie.companies {
+                    if let companies = viewStore.movie.companies {
                         HStack(spacing: .zero) {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Production Companies")
@@ -93,12 +94,14 @@ struct MovieView<ViewModel: MovieViewModelling>: View {
             }
         }
         .navigationBarBackButtonHidden()
-        .navigationTitle(Text(viewModel.movie.name))
+        .navigationTitle(Text(viewStore.movie.name))
         .toolbar {
             toolbarItems
         }
         .onAppear {
-            viewModel.loadData()
+            viewStore.send(.loadPoster)
+            viewStore.send(.loadBackdrop)
+            viewStore.send(.loadPoster)
         }
     }
 }
@@ -109,11 +112,11 @@ extension MovieView {
     var toolbarItems: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             BackButton {
-                viewModel.back()
+                viewStore.send(.back)
             }
         }
 
-        if viewModel.isMovieLoading {
+        if viewStore.isMovieLoading {
             ToolbarItem(placement: .navigationBarTrailing) {
                 ProgressView()
             }
@@ -126,6 +129,6 @@ extension MovieView {
     var releaseDateFormatted: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/YYYY"
-        return dateFormatter.string(from: viewModel.movie.releaseDate) 
+        return dateFormatter.string(from: viewStore.movie.releaseDate) 
     }
 }
