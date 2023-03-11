@@ -38,14 +38,6 @@ extension MoviesRemoteDataSource: DataKit.MoviesRemoteDataSource {
         }
         .logInConsole(.debugEnabled)
         .decode(MovieDetailResponseDTO.self, decoder: .default)
-        .detach {
-            switch $0 {
-            case .success(let result):
-                print(result)
-            case .failure(let error):
-                print(error)
-            }
-        }
         .extractPayload()
         .result()
     }

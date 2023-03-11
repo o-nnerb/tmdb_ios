@@ -101,7 +101,7 @@ struct MovieView: View {
         .onAppear {
             viewStore.send(.loadPoster)
             viewStore.send(.loadBackdrop)
-            viewStore.send(.loadPoster)
+            viewStore.send(.loadDetail)
         }
     }
 }

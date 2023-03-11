@@ -41,12 +41,12 @@ struct MovieReducer: ReducerProtocol {
 
         // MARK: - Destination
         case back
-        case error(Error)
+        case error(Error, RequestID.Type?)
     }
 
-    private enum MovieID {}
-    private enum PosterID {}
-    private enum BackdropID {}
+    private enum MovieID: RequestID {}
+    private enum PosterID: RequestID {}
+    private enum BackdropID: RequestID {}
 
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
@@ -101,8 +101,19 @@ struct MovieReducer: ReducerProtocol {
                 state.backdrop = backdrop
                 state.isBackdropLoading = false
 
-            case .error(let error):
+            case .error(let error, let id):
                 state.destination = .error(error)
+
+                switch id {
+                case is MovieID.Type:
+                    state.isMovieLoading = false
+                case is PosterID.Type:
+                    state.isPosterLoading = false
+                case is BackdropID.Type:
+                    state.isBackdropLoading = false
+                default:
+                    break
+                }
 
             case .back:
                 state.destination = .back
@@ -127,7 +138,7 @@ extension MovieReducer {
             let movie = try await getMovieUseCase(movie.id)
             return .movie(.init(movie))
         } catch {
-            return .error(error)
+            return .error(error, MovieID.self)
         }
     }
 
@@ -160,3 +171,5 @@ extension MovieReducer {
         return context.createCGImage(ciImage, from: ciImage.extent)
     }
 }
+
+protocol RequestID {}
