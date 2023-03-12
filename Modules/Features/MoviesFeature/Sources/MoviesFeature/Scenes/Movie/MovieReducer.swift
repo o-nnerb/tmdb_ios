@@ -11,6 +11,7 @@ import CoreKit
 import Injection
 import CoreScene
 import ComposableArchitecture
+import NavigationKit
 
 struct MovieReducer: ReducerProtocol {
 
@@ -21,11 +22,12 @@ struct MovieReducer: ReducerProtocol {
         var movie: MovieDetail
         var poster: CGImage?
         var backdrop: CGImage?
-        var destination: MovieDestination?
 
         var isMovieLoading: Bool = false
         var isPosterLoading: Bool = false
         var isBackdropLoading: Bool = false
+
+        let transaction = SceneTransaction<MovieDestination>()
     }
 
     enum Action {
@@ -102,7 +104,7 @@ struct MovieReducer: ReducerProtocol {
                 state.isBackdropLoading = false
 
             case .error(let error, let id):
-                state.destination = .error(error)
+                state.transaction(.error(error))
 
                 switch id {
                 case is MovieID.Type:
@@ -116,7 +118,7 @@ struct MovieReducer: ReducerProtocol {
                 }
 
             case .back:
-                state.destination = .back
+                state.transaction(.back)
             }
 
             return .none

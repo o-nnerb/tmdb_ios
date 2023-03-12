@@ -7,5 +7,16 @@
 
 import Foundation
 import CoreScene
+import ComposableArchitecture
 
 typealias MoviesScene = MoviesFeatureScene.Movies
+
+extension MoviesScene {
+
+    var store: StoreOf<MoviesReducer> {
+        .init(
+            initialState: .init(),
+            reducer: MoviesReducer()
+        )
+    }
+}

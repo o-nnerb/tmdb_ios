@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @MainActor
-struct MoviesView<ViewModel: MoviesViewModelling>: View {
+struct MoviesView: View {
 
-    @ObservedObject var viewModel: ViewModel
+    let viewStore: ViewStoreOf<MoviesReducer>
 
     var body: some View {
         Group {
@@ -27,24 +28,24 @@ struct MoviesView<ViewModel: MoviesViewModelling>: View {
                 )
             case .items:
                 List {
-                    if !viewModel.items.isEmpty {
+                    if !viewStore.items.isEmpty {
                         Section {
-                            ForEach(viewModel.items) { item in
+                            ForEach(viewStore.items) { item in
                                 MovieItemView(item) {
-                                    viewModel.submit(item)
+                                    viewStore.send(.submit(item))
                                 }
                                 .onAppear {
-                                    viewModel.loadNextPageIfNeeded(item)
+                                    viewStore.send(.loadNextPageIfNeeded(item))
                                 }
                             }
                         } header: {
-                            if !viewModel.query.isEmpty {
+                            if !viewStore.query.isEmpty {
                                 Text("Results")
                             }
                         }
                     }
 
-                    if viewModel.isLoading {
+                    if viewStore.isLoading {
                         Section {
                             ProgressView()
                                 .frame(maxWidth: .infinity)
@@ -55,9 +56,11 @@ struct MoviesView<ViewModel: MoviesViewModelling>: View {
         }
         .navigationBarBackButtonHidden()
         .navigationTitle(Text("Upcoming Movies"))
-        .searchable(text: $viewModel.query)
+        .searchable(text: viewStore.binding(get: \.query) {
+            .queryChanged($0)
+        })
         .onAppear {
-            viewModel.loadData()
+            viewStore.send(.loadData)
         }
     }
 }
@@ -72,11 +75,11 @@ extension MoviesView {
 
     var displayMode: DisplayMode {
         guard
-            !viewModel.isLoading,
-            viewModel.items.isEmpty
+            !viewStore.isLoading,
+            viewStore.items.isEmpty
         else { return .items }
 
-        if !viewModel.query.isEmpty {
+        if !viewStore.query.isEmpty {
             return .notFound
         } else {
             return .empty

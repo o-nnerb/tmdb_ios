@@ -8,7 +8,7 @@
 import Foundation
 import CoreKit
 
-struct Movie: Equatable {
+struct Movie: Hashable {
 
     private let model: MovieResponse
 

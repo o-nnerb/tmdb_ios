@@ -28,14 +28,12 @@ struct MovieCoordinator: Coordinator {
     var body: some View {
         WithViewStore(scene.store) {
             MovieView(viewStore: $0)
-                .onChange(of: $0.destination) {
+                .onReceive($0.transaction.publisher) {
                     switch $0 {
                     case .back:
                         backScene()
                     case .error(let error):
                         errorAction(error)
-                    case .none:
-                        break
                     }
                 }
         }

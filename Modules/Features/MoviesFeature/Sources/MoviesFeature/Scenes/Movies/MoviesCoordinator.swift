@@ -11,6 +11,7 @@ import CoreApp
 import CoreScene
 import Injection
 import CoreKit
+import ComposableArchitecture
 
 @MainActor
 struct MoviesCoordinator: Coordinator {
@@ -25,16 +26,14 @@ struct MoviesCoordinator: Coordinator {
     }
 
     var body: some View {
-        ViewModelConnection(scene, MoviesViewModel.init) { viewModel in
-            MoviesView(viewModel: viewModel)
-                .onReceive(viewModel.$destination) {
+        WithViewStore(scene.store) { viewStore in
+            MoviesView(viewStore: viewStore)
+                .onReceive(viewStore.transaction.publisher) {
                     switch $0 {
                     case .error(let error):
                         errorAction(error)
                     case .submit(let movie):
                         submitScene(movie)
-                    case .none:
-                        break
                     }
                 }
         }
