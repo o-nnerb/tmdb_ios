@@ -17,6 +17,14 @@ public struct TMDbAppDescriptor: FeatureDescriptor {
 
     public func body(content: Content) -> some View {
         content
+            .navigationDestinationTransformer(for: TMDbAppScene.self) { transformer, scene in
+                switch scene {
+                case .movies(let scene):
+                    transformer(scene)
+                case .app:
+                    break
+                }
+            }
             .modifier(AppFeatureDescriptor())
             .modifier(MoviesFeatureDescriptor())
     }
