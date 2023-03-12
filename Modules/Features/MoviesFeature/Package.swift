@@ -19,7 +19,7 @@ let package = Package(
         .package(path: "../../CoreScene"),
         .package(
             url: "https://github.com/brennobemoura/navigation-kit.git",
-            from: "1.0.0-alpha"
+            from: "1.0.0-alpha.2"
         ),
         .package(
             url: "https://github.com/pointfreeco/swift-composable-architecture.git",

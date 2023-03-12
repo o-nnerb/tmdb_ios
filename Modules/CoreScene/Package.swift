@@ -18,7 +18,7 @@ let package = Package(
         .package(path: "../CoreKit"),
         .package(
             url: "https://github.com/brennobemoura/navigation-kit.git",
-            from: "1.0.0-alpha"
+            from: "1.0.0-alpha.2"
         )
     ],
     targets: [

@@ -32,7 +32,8 @@ let package = Package(
         .package(path: "../Features/\($0)")
     } + [
         .package(
-            path: "~/Repositorios/github/navigation-kit"
+            url: "https://github.com/brennobemoura/navigation-kit.git",
+            from: "1.0.0-alpha.2"
         ),
         .package(
             url: "https://github.com/pointfreeco/swift-composable-architecture.git",
