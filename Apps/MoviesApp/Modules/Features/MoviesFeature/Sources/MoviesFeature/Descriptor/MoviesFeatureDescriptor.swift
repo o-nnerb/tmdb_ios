@@ -21,5 +21,11 @@ public struct MoviesFeatureDescriptor: FeatureDescriptor {
             .navigationDestination(for: MoviesScene.self) {
                 MoviesCoordinator($0)
             }
+            .navigationDestinationTransformer(for: MoviesFeatureScene.self) {
+                switch $1 {
+                case .movies(let scene):
+                    $0(scene)
+                }
+            }
     }
 }

@@ -2,20 +2,18 @@
 //  File.swift
 //  
 //
-//  Created by Brenno on 12/03/23.
+//  Created by Brenno on 16/03/23.
 //
 
 import SwiftUI
-import SuperKit
 import NavigationKit
-import MoviesFeature
+import MoviesScenes
 
-public struct MoviesAppActions: AppActions {
+public struct MoviesFeatureActions: FeatureActions {
 
     public init() {}
 
     public func body(content: Content) -> some View {
         content
-            .modifier(MoviesFeatureActions())
     }
 }

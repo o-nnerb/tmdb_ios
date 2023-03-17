@@ -9,6 +9,7 @@ import SwiftUI
 import SuperKit
 import NavigationKit
 import LoginScenes
+import CoreFeature
 
 public struct LoginAppActions: AppActions {
 
@@ -22,5 +23,6 @@ public struct LoginAppActions: AppActions {
                     return CoreFeatureAction.error(error)
                 }
             }
+            .modifier(CoreFeatureActions())
     }
 }
