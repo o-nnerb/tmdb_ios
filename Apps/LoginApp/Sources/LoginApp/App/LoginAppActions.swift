@@ -17,10 +17,10 @@ public struct LoginAppActions: AppActions {
 
     public func body(content: Content) -> some View {
         content
-            .sceneActionMap(for: LoginAppAction.self) { action -> CoreFeatureAction in
-                switch action {
+            .sceneActionTransformer(for: LoginAppAction.self) {
+                switch $1 {
                 case .error(let error):
-                    return CoreFeatureAction.error(error)
+                    $0(error)
                 }
             }
             .modifier(CoreFeatureActions())

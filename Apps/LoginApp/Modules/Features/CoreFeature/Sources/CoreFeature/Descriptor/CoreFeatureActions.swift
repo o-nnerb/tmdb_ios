@@ -15,10 +15,10 @@ public struct CoreFeatureActions: FeatureActions {
 
     public func body(content: Content) -> some View {
         content
-            .sceneActionMap(for: CoreFeatureAction.self) { action -> ErrorAction in
-                switch action {
+            .sceneActionTransformer(for: CoreFeatureAction.self) {
+                switch $1 {
                 case .error(let failure):
-                    return failure
+                    $0(failure)
                 }
             }
     }

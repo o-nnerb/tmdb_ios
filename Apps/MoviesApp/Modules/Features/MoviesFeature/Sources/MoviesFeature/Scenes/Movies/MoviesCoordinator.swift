@@ -26,7 +26,7 @@ struct MoviesCoordinator: Coordinator {
     }
 
     var body: some View {
-        ViewModelConnection(scene, \.store) {
+        ObjectConnection(scene, \.store) {
             WithViewStore($0) { viewStore in
                 MoviesView(viewStore: viewStore)
                     .onReceive(viewStore.transaction.publisher) {
