@@ -26,16 +26,18 @@ struct MovieCoordinator: Coordinator {
     }
 
     var body: some View {
-        WithViewStore(scene.store) {
-            MovieView(viewStore: $0)
-                .onReceive($0.transaction.publisher) {
-                    switch $0 {
-                    case .back:
-                        backScene()
-                    case .error(let error):
-                        errorAction(error)
+        ViewModelConnection(scene, \.store) {
+            WithViewStore($0) {
+                MovieView(viewStore: $0)
+                    .onReceive($0.transaction.publisher) {
+                        switch $0 {
+                        case .back:
+                            backScene()
+                        case .error(let error):
+                            errorAction(error)
+                        }
                     }
-                }
+            }
         }
     }
 }

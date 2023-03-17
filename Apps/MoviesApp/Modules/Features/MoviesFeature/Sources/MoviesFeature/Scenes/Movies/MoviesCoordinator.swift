@@ -26,16 +26,18 @@ struct MoviesCoordinator: Coordinator {
     }
 
     var body: some View {
-        WithViewStore(scene.store) { viewStore in
-            MoviesView(viewStore: viewStore)
-                .onReceive(viewStore.transaction.publisher) {
-                    switch $0 {
-                    case .error(let error):
-                        errorAction(error)
-                    case .submit(let movie):
-                        submitScene(movie)
+        ViewModelConnection(scene, \.store) {
+            WithViewStore($0) { viewStore in
+                MoviesView(viewStore: viewStore)
+                    .onReceive(viewStore.transaction.publisher) {
+                        switch $0 {
+                        case .error(let error):
+                            errorAction(error)
+                        case .submit(let movie):
+                            submitScene(movie)
+                        }
                     }
-                }
+            }
         }
     }
 }

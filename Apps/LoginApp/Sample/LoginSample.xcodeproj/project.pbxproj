@@ -7,158 +7,143 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		164830AC29C3ECE9005E5E42 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = 164830AB29C3ECE9005E5E42 /* Injection */; };
-		164830AE29C3ECE9005E5E42 /* LoginApp in Frameworks */ = {isa = PBXBuildFile; productRef = 164830AD29C3ECE9005E5E42 /* LoginApp */; };
-		164830B029C3ECE9005E5E42 /* MoviesApp in Frameworks */ = {isa = PBXBuildFile; productRef = 164830AF29C3ECE9005E5E42 /* MoviesApp */; };
-		164830B229C3ECE9005E5E42 /* SuperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 164830B129C3ECE9005E5E42 /* SuperKit */; };
-		164830B429C3ECE9005E5E42 /* SuperUI in Frameworks */ = {isa = PBXBuildFile; productRef = 164830B329C3ECE9005E5E42 /* SuperUI */; };
-		164830B629C3ED1F005E5E42 /* NavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164830B529C3ED1F005E5E42 /* NavigationBuilder.swift */; };
-		16BA6DB829BE5ECA000E5274 /* SuperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BA6DB729BE5ECA000E5274 /* SuperApp.swift */; };
-		16BA6DBA29BE5ECA000E5274 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BA6DB929BE5ECA000E5274 /* ContentView.swift */; };
-		16BA6DBC29BE5ECB000E5274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BA6DBB29BE5ECB000E5274 /* Assets.xcassets */; };
-		16BA6DBF29BE5ECB000E5274 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BA6DBE29BE5ECB000E5274 /* Preview Assets.xcassets */; };
+		163EB71C29BE79D500CBC132 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = 163EB71B29BE79D500CBC132 /* Injection */; };
+		163EB71E29BE79D500CBC132 /* SuperUI in Frameworks */ = {isa = PBXBuildFile; productRef = 163EB71D29BE79D500CBC132 /* SuperUI */; };
+		163EB72029BE7A0900CBC132 /* NavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163EB71F29BE7A0900CBC132 /* NavigationBuilder.swift */; };
+		16651B6629BE7943004B3754 /* LoginSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16651B6529BE7943004B3754 /* LoginSampleApp.swift */; };
+		16651B6829BE7943004B3754 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16651B6729BE7943004B3754 /* ContentView.swift */; };
+		16651B6A29BE7944004B3754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16651B6929BE7944004B3754 /* Assets.xcassets */; };
+		16651B6D29BE7944004B3754 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16651B6C29BE7944004B3754 /* Preview Assets.xcassets */; };
+		16651B7629BE7988004B3754 /* LoginApp in Frameworks */ = {isa = PBXBuildFile; productRef = 16651B7529BE7988004B3754 /* LoginApp */; };
+		16651B7C29BE79C5004B3754 /* SuperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16651B7B29BE79C5004B3754 /* SuperKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		164830A529C3EC55005E5E42 /* SuperUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SuperUI; sourceTree = "<group>"; };
-		164830A629C3EC55005E5E42 /* SuperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SuperKit; sourceTree = "<group>"; };
-		164830A729C3EC55005E5E42 /* Injection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Injection; sourceTree = "<group>"; };
-		164830A829C3EC5B005E5E42 /* LoginApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LoginApp; sourceTree = "<group>"; };
-		164830A929C3EC5B005E5E42 /* MoviesApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MoviesApp; sourceTree = "<group>"; };
-		164830B529C3ED1F005E5E42 /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
-		16BA6DB429BE5ECA000E5274 /* SuperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		16BA6DB729BE5ECA000E5274 /* SuperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperApp.swift; sourceTree = "<group>"; };
-		16BA6DB929BE5ECA000E5274 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		16BA6DBB29BE5ECB000E5274 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		16BA6DBE29BE5ECB000E5274 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		163EB71F29BE7A0900CBC132 /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
+		16651B6229BE7943004B3754 /* LoginSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16651B6529BE7943004B3754 /* LoginSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSampleApp.swift; sourceTree = "<group>"; };
+		16651B6729BE7943004B3754 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		16651B6929BE7944004B3754 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16651B6C29BE7944004B3754 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		16651B7329BE7961004B3754 /* LoginApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LoginApp; path = ..; sourceTree = "<group>"; };
+		16F3593029C3E8EC00DF845F /* SuperUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SuperUI; path = ../../../Modules/SuperUI; sourceTree = "<group>"; };
+		16F3593129C3E8EC00DF845F /* SuperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SuperKit; path = ../../../Modules/SuperKit; sourceTree = "<group>"; };
+		16F3593229C3E8EC00DF845F /* Injection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Injection; path = ../../../Modules/Injection; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		16BA6DB129BE5ECA000E5274 /* Frameworks */ = {
+		16651B5F29BE7943004B3754 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				164830B429C3ECE9005E5E42 /* SuperUI in Frameworks */,
-				164830B029C3ECE9005E5E42 /* MoviesApp in Frameworks */,
-				164830AE29C3ECE9005E5E42 /* LoginApp in Frameworks */,
-				164830AC29C3ECE9005E5E42 /* Injection in Frameworks */,
-				164830B229C3ECE9005E5E42 /* SuperKit in Frameworks */,
+				163EB71E29BE79D500CBC132 /* SuperUI in Frameworks */,
+				163EB71C29BE79D500CBC132 /* Injection in Frameworks */,
+				16651B7629BE7988004B3754 /* LoginApp in Frameworks */,
+				16651B7C29BE79C5004B3754 /* SuperKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		164830A329C3EC39005E5E42 /* Modules */ = {
+		16651B5929BE7943004B3754 = {
 			isa = PBXGroup;
 			children = (
-				164830A729C3EC55005E5E42 /* Injection */,
-				164830A629C3EC55005E5E42 /* SuperKit */,
-				164830A529C3EC55005E5E42 /* SuperUI */,
+				16651B7A29BE79B6004B3754 /* Modules */,
+				16651B6429BE7943004B3754 /* LoginSample */,
+				16651B6329BE7943004B3754 /* Products */,
+				16651B7429BE7988004B3754 /* Frameworks */,
 			);
-			name = Modules;
-			path = ../Modules;
 			sourceTree = "<group>";
 		};
-		164830A429C3EC40005E5E42 /* Apps */ = {
+		16651B6329BE7943004B3754 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				164830A829C3EC5B005E5E42 /* LoginApp */,
-				164830A929C3EC5B005E5E42 /* MoviesApp */,
+				16651B6229BE7943004B3754 /* LoginSample.app */,
 			);
-			name = Apps;
-			path = ../Apps;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		164830AA29C3ECE9005E5E42 /* Frameworks */ = {
+		16651B6429BE7943004B3754 /* LoginSample */ = {
+			isa = PBXGroup;
+			children = (
+				16651B6529BE7943004B3754 /* LoginSampleApp.swift */,
+				16651B6729BE7943004B3754 /* ContentView.swift */,
+				163EB71F29BE7A0900CBC132 /* NavigationBuilder.swift */,
+				16651B6929BE7944004B3754 /* Assets.xcassets */,
+				16651B6B29BE7944004B3754 /* Preview Content */,
+			);
+			path = LoginSample;
+			sourceTree = "<group>";
+		};
+		16651B6B29BE7944004B3754 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				16651B6C29BE7944004B3754 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		16651B7429BE7988004B3754 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		16BA6DAB29BE5ECA000E5274 = {
+		16651B7A29BE79B6004B3754 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				16BA6DB629BE5ECA000E5274 /* SuperApp */,
-				16BA6DB529BE5ECA000E5274 /* Products */,
-				164830AA29C3ECE9005E5E42 /* Frameworks */,
+				16F3593229C3E8EC00DF845F /* Injection */,
+				16F3593129C3E8EC00DF845F /* SuperKit */,
+				16F3593029C3E8EC00DF845F /* SuperUI */,
+				16651B7329BE7961004B3754 /* LoginApp */,
 			);
-			sourceTree = "<group>";
-		};
-		16BA6DB529BE5ECA000E5274 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				16BA6DB429BE5ECA000E5274 /* SuperApp.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		16BA6DB629BE5ECA000E5274 /* SuperApp */ = {
-			isa = PBXGroup;
-			children = (
-				164830A429C3EC40005E5E42 /* Apps */,
-				164830A329C3EC39005E5E42 /* Modules */,
-				16BA6DB729BE5ECA000E5274 /* SuperApp.swift */,
-				16BA6DB929BE5ECA000E5274 /* ContentView.swift */,
-				16BA6DBB29BE5ECB000E5274 /* Assets.xcassets */,
-				16BA6DBD29BE5ECB000E5274 /* Preview Content */,
-				164830B529C3ED1F005E5E42 /* NavigationBuilder.swift */,
-			);
-			path = SuperApp;
-			sourceTree = "<group>";
-		};
-		16BA6DBD29BE5ECB000E5274 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				16BA6DBE29BE5ECB000E5274 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
+			name = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		16BA6DB329BE5ECA000E5274 /* SuperApp */ = {
+		16651B6129BE7943004B3754 /* LoginSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 16BA6DC229BE5ECB000E5274 /* Build configuration list for PBXNativeTarget "SuperApp" */;
+			buildConfigurationList = 16651B7029BE7944004B3754 /* Build configuration list for PBXNativeTarget "LoginSample" */;
 			buildPhases = (
-				16BA6DB029BE5ECA000E5274 /* Sources */,
-				16BA6DB129BE5ECA000E5274 /* Frameworks */,
-				16BA6DB229BE5ECA000E5274 /* Resources */,
+				16651B5E29BE7943004B3754 /* Sources */,
+				16651B5F29BE7943004B3754 /* Frameworks */,
+				16651B6029BE7943004B3754 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SuperApp;
+			name = LoginSample;
 			packageProductDependencies = (
-				164830AB29C3ECE9005E5E42 /* Injection */,
-				164830AD29C3ECE9005E5E42 /* LoginApp */,
-				164830AF29C3ECE9005E5E42 /* MoviesApp */,
-				164830B129C3ECE9005E5E42 /* SuperKit */,
-				164830B329C3ECE9005E5E42 /* SuperUI */,
+				16651B7529BE7988004B3754 /* LoginApp */,
+				16651B7B29BE79C5004B3754 /* SuperKit */,
+				163EB71B29BE79D500CBC132 /* Injection */,
+				163EB71D29BE79D500CBC132 /* SuperUI */,
 			);
-			productName = SuperApp;
-			productReference = 16BA6DB429BE5ECA000E5274 /* SuperApp.app */;
+			productName = LoginSample;
+			productReference = 16651B6229BE7943004B3754 /* LoginSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		16BA6DAC29BE5ECA000E5274 /* Project object */ = {
+		16651B5A29BE7943004B3754 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					16BA6DB329BE5ECA000E5274 = {
+					16651B6129BE7943004B3754 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
-			buildConfigurationList = 16BA6DAF29BE5ECA000E5274 /* Build configuration list for PBXProject "SuperApp" */;
+			buildConfigurationList = 16651B5D29BE7943004B3754 /* Build configuration list for PBXProject "LoginSample" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -166,43 +151,43 @@
 				en,
 				Base,
 			);
-			mainGroup = 16BA6DAB29BE5ECA000E5274;
-			productRefGroup = 16BA6DB529BE5ECA000E5274 /* Products */;
+			mainGroup = 16651B5929BE7943004B3754;
+			productRefGroup = 16651B6329BE7943004B3754 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				16BA6DB329BE5ECA000E5274 /* SuperApp */,
+				16651B6129BE7943004B3754 /* LoginSample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		16BA6DB229BE5ECA000E5274 /* Resources */ = {
+		16651B6029BE7943004B3754 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16BA6DBF29BE5ECB000E5274 /* Preview Assets.xcassets in Resources */,
-				16BA6DBC29BE5ECB000E5274 /* Assets.xcassets in Resources */,
+				16651B6D29BE7944004B3754 /* Preview Assets.xcassets in Resources */,
+				16651B6A29BE7944004B3754 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		16BA6DB029BE5ECA000E5274 /* Sources */ = {
+		16651B5E29BE7943004B3754 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16BA6DBA29BE5ECA000E5274 /* ContentView.swift in Sources */,
-				16BA6DB829BE5ECA000E5274 /* SuperApp.swift in Sources */,
-				164830B629C3ED1F005E5E42 /* NavigationBuilder.swift in Sources */,
+				16651B6829BE7943004B3754 /* ContentView.swift in Sources */,
+				16651B6629BE7943004B3754 /* LoginSampleApp.swift in Sources */,
+				163EB72029BE7A0900CBC132 /* NavigationBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		16BA6DC029BE5ECB000E5274 /* Debug */ = {
+		16651B6E29BE7944004B3754 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -262,7 +247,7 @@
 			};
 			name = Debug;
 		};
-		16BA6DC129BE5ECB000E5274 /* Release */ = {
+		16651B6F29BE7944004B3754 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -316,26 +301,27 @@
 			};
 			name = Release;
 		};
-		16BA6DC329BE5ECB000E5274 /* Debug */ = {
+		16651B7129BE7944004B3754 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SuperApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LoginSample/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = brenno.SuperApp;
+				PRODUCT_BUNDLE_IDENTIFIER = brenno.LoginSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -346,26 +332,27 @@
 			};
 			name = Debug;
 		};
-		16BA6DC429BE5ECB000E5274 /* Release */ = {
+		16651B7229BE7944004B3754 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SuperApp/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LoginSample/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = brenno.SuperApp;
+				PRODUCT_BUNDLE_IDENTIFIER = brenno.LoginSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -379,20 +366,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		16BA6DAF29BE5ECA000E5274 /* Build configuration list for PBXProject "SuperApp" */ = {
+		16651B5D29BE7943004B3754 /* Build configuration list for PBXProject "LoginSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				16BA6DC029BE5ECB000E5274 /* Debug */,
-				16BA6DC129BE5ECB000E5274 /* Release */,
+				16651B6E29BE7944004B3754 /* Debug */,
+				16651B6F29BE7944004B3754 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		16BA6DC229BE5ECB000E5274 /* Build configuration list for PBXNativeTarget "SuperApp" */ = {
+		16651B7029BE7944004B3754 /* Build configuration list for PBXNativeTarget "LoginSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				16BA6DC329BE5ECB000E5274 /* Debug */,
-				16BA6DC429BE5ECB000E5274 /* Release */,
+				16651B7129BE7944004B3754 /* Debug */,
+				16651B7229BE7944004B3754 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -400,27 +387,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		164830AB29C3ECE9005E5E42 /* Injection */ = {
+		163EB71B29BE79D500CBC132 /* Injection */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Injection;
 		};
-		164830AD29C3ECE9005E5E42 /* LoginApp */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LoginApp;
-		};
-		164830AF29C3ECE9005E5E42 /* MoviesApp */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MoviesApp;
-		};
-		164830B129C3ECE9005E5E42 /* SuperKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SuperKit;
-		};
-		164830B329C3ECE9005E5E42 /* SuperUI */ = {
+		163EB71D29BE79D500CBC132 /* SuperUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SuperUI;
 		};
+		16651B7529BE7988004B3754 /* LoginApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LoginApp;
+		};
+		16651B7B29BE79C5004B3754 /* SuperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SuperKit;
+		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 16BA6DAC29BE5ECA000E5274 /* Project object */;
+	rootObject = 16651B5A29BE7943004B3754 /* Project object */;
 }

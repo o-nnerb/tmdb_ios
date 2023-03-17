@@ -4,23 +4,23 @@
 import PackageDescription
 
 let cores = [
-    "MoviesDomain",
-    "MoviesData",
-    "MoviesNetworking",
-    "MoviesStorage"
+    "LoginDomain",
+    "LoginData",
+    "LoginNetworking",
+    "LoginStorage"
 ]
 
 let features = [
-    "MoviesFeature"
+    "CoreFeature"
 ]
 
 let package = Package(
-    name: "MoviesApp",
+    name: "LoginApp",
     platforms: [.iOS(.v16), .watchOS(.v9), .tvOS(.v16), .macOS(.v13)],
     products: [
         .library(
-            name: "MoviesApp",
-            targets: ["MoviesApp"]
+            name: "LoginApp",
+            targets: ["LoginApp"]
         )
     ],
     dependencies: cores.map {
@@ -43,7 +43,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MoviesApp",
+            name: "LoginApp",
             dependencies: cores.map {
                 .product(name: $0, package: $0)
             } + features.map {

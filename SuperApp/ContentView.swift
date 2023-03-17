@@ -6,16 +6,16 @@
 //
 
 import SwiftUI
+import SuperKit
 
 struct ContentView: View {
+
+    @Environment(\.viewResolver) var viewResolver
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        viewResolver(MoviesAppScene.movies(
+            MoviesAppScene.Movies()
+        ))
     }
 }
 

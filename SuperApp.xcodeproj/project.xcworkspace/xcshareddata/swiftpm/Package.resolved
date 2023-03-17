@@ -14,7 +14,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brennobemoura/navigation-kit.git",
       "state" : {
-        "revision" : "7721f8b71555a63c3d329d08320598e422e0c3a1",
+        "revision" : "6621fcea5250d58cd6e7b13c359ebf5cb054c038",
         "version" : "1.0.0-alpha.3"
       }
     },
@@ -95,8 +95,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swiftui-navigation",
       "state" : {
-        "revision" : "0a0e1b321d70ee6a464ecfe6b0136d9eff77ebfc",
-        "version" : "0.7.0"
+        "revision" : "47dd574b900ba5ba679f56ea00d4d282fc7305a6",
+        "version" : "0.7.1"
       }
     },
     {

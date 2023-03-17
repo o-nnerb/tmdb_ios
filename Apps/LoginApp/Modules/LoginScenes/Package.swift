@@ -3,58 +3,41 @@
 
 import PackageDescription
 
-let cores = [
-    "MoviesDomain",
-    "MoviesData",
-    "MoviesNetworking",
-    "MoviesStorage"
-]
-
-let features = [
-    "MoviesFeature"
-]
-
 let package = Package(
-    name: "MoviesApp",
+    name: "LoginScenes",
     platforms: [.iOS(.v16), .watchOS(.v9), .tvOS(.v16), .macOS(.v13)],
     products: [
         .library(
-            name: "MoviesApp",
-            targets: ["MoviesApp"]
+            name: "LoginScenes",
+            targets: ["LoginScenes"]
         )
     ],
-    dependencies: cores.map {
-        .package(path: "Modules/\($0)")
-    } + features.map {
-        .package(path: "Modules/Features/\($0)")
-    } + [
+    dependencies: [
         .package(
             url: "https://github.com/brennobemoura/navigation-kit.git",
-            from: "1.0.0-alpha.3"
+            from: "1.0.0-alpha.2"
         ),
         .package(
             url: "https://github.com/pointfreeco/swift-composable-architecture.git",
             from: "0.52.0"
         ),
 
-        .package(path: "../../Modules/Injection"),
-        .package(path: "../../Modules/SuperKit"),
-        .package(path: "../../Modules/SuperUI")
+        .package(path: "../../../../Modules/Injection"),
+        .package(path: "../../../../Modules/SuperKit"),
+        .package(path: "../../../../Modules/SuperUI"),
+        .package(path: "../LoginDomain")
     ],
     targets: [
         .target(
-            name: "MoviesApp",
-            dependencies: cores.map {
-                .product(name: $0, package: $0)
-            } + features.map {
-                .product(name: $0, package: $0)
-            } + [
+            name: "LoginScenes",
+            dependencies: [
                 .product(name: "NavigationKit", package: "navigation-kit"),
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
 
                 "Injection",
                 "SuperKit",
-                "SuperUI"
+                "SuperUI",
+                "LoginDomain"
             ]
         )
     ]
