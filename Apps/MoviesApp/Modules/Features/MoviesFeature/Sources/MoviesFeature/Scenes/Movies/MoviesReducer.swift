@@ -79,6 +79,7 @@ struct MoviesReducer: ReducerProtocol {
 
                 switch type {
                 case is LoadDataID.Type:
+                    state.canLoadMorePages = false
                     state.isLoading = false
                 default:
                     break

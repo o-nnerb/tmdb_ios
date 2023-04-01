@@ -15,7 +15,7 @@ private enum Loading {
     case failed
 }
 
-class ImageManager {
+actor ImageManager {
 
     @Injected var getPhotoUseCase: GetPhotoUseCaseProtocol
 
