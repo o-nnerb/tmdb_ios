@@ -31,7 +31,7 @@ extension MovieItemView {
             currentMovie = movie
             Task {
                 isPosterLoading = true
-                if let path = movie.posterPath, let data = try? await ImageManager.shared.getPhoto(path) {
+                if let path = movie.posterPath, let data = try? await getPhotoUseCase(path) {
                     poster = getImage(from: data)
                 } else {
                     poster = nil

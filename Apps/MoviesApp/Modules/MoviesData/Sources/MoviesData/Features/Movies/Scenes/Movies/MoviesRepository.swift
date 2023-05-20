@@ -38,12 +38,6 @@ extension MoviesRepository: MoviesRepositoryProtocol {
     }
 
     public func getPhoto(for path: String) async throws -> Data {
-        do {
-            return try local.getPhoto(path)
-        } catch {}
-
-        let data = try await remote.getPhoto(for: path)
-        try local.setPhoto(data, forPath: path)
-        return data
+        try await remote.getPhoto(for: path)
     }
 }
