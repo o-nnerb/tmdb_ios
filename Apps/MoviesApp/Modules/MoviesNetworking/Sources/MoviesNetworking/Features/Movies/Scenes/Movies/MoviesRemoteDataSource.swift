@@ -22,8 +22,7 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
             TMDbHeaders()
             Path("genre/movie/list")
             RequestMethod(.get)
-                .cachePolicy(.disk)
-                .cacheStrategy(.returnStoredElseLoad)
+                .cacheStrategy(.usesStoredOnly)
         }
         .logInConsole(.debugEnabled)
         .keyPath(\.results)
@@ -71,8 +70,8 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
                 .cachePolicy(.disk)
                 .cacheStrategy(.usesStoredOnly)
                 .cache(
-                    memoryCapacity: 400 * 1_024 * 1_024,
-                    diskCapacity: 16 * 1_024 * 1_024 * 1_024,
+                    memoryCapacity: 40 * 1_024 * 1_024,
+                    diskCapacity: 320 * 1_024 * 1_024,
                     suiteName: "temp.images"
                 )
         }
