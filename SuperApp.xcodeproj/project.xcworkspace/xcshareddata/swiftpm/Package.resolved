@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-server/async-http-client",
       "state" : {
-        "revision" : "333e60cc90f52973f7ee29cd8e3a7f6adfe79f4e",
-        "version" : "1.17.0"
+        "revision" : "78db67e5bf4a8543075787f228e8920097319281",
+        "version" : "1.18.0"
       }
     },
     {
@@ -25,6 +25,15 @@
       "state" : {
         "revision" : "5cd4457f55d213fce979878631d489870c7f7e1e",
         "version" : "1.0.0-alpha.4"
+      }
+    },
+    {
+      "identity" : "request-dl",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brennobemoura/request-dl.git",
+      "state" : {
+        "revision" : "c9917055852200cd655198aa8ab6c28f602bf6a1",
+        "version" : "2.2.0"
       }
     },
     {
@@ -88,24 +97,6 @@
       "state" : {
         "revision" : "6bb1034e8a1bfbf46dfb766b6c09b7b17e1cba10",
         "version" : "0.2.0"
-      }
-    },
-    {
-      "identity" : "swift-docc-plugin",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-docc-plugin.git",
-      "state" : {
-        "revision" : "9b1258905c21fc1b97bf03d1b4ca12c4ec4e5fda",
-        "version" : "1.2.0"
-      }
-    },
-    {
-      "identity" : "swift-docc-symbolkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-docc-symbolkit",
-      "state" : {
-        "revision" : "b45d1f2ed151d057b54504d653e0da5552844e34",
-        "version" : "1.0.0"
       }
     },
     {

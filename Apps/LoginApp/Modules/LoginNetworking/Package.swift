@@ -19,7 +19,7 @@ let package = Package(
         .package(path: "../LoginData"),
         .package(
             url: "https://github.com/brennobemoura/request-dl.git",
-            from: "2.0.0"
+            from: "2.2.0"
         )
     ],
     targets: [

@@ -22,7 +22,7 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
             TMDbHeaders()
             Path("genre/movie/list")
             RequestMethod(.get)
-                .cacheStrategy(.usesStoredOnly)
+                .cacheStrategy(.returnCachedDataElseLoad)
         }
         .logInConsole(.debugEnabled)
         .keyPath(\.results)
@@ -37,7 +37,7 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
             Path("movie/\(id)")
             RequestMethod(.get)
                 .cachePolicy(.memory)
-                .cacheStrategy(.usesStoredOnly)
+                .cacheStrategy(.returnCachedDataElseLoad)
         }
         .logInConsole(.debugEnabled)
         .decode(MovieDetailResponseDTO.self, decoder: .default)
@@ -52,7 +52,7 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
             Query(page, forKey: "page")
             RequestMethod(.get)
                 .cachePolicy(.disk)
-                .cacheStrategy(.returnStoredElseLoad)
+                .cacheStrategy(.reloadAndValidateCachedData)
         }
         .logInConsole(.debugEnabled)
         .keyPath(\.results)
@@ -68,7 +68,7 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
             Headers.Accept(.png)
             RequestMethod(.get)
                 .cachePolicy(.disk)
-                .cacheStrategy(.usesStoredOnly)
+                .cacheStrategy(.returnCachedDataElseLoad)
                 .cache(
                     memoryCapacity: 40 * 1_024 * 1_024,
                     diskCapacity: 320 * 1_024 * 1_024,
