@@ -49,7 +49,7 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
         try await DataTask {
             TMDbHeaders()
             Path("movie/upcoming")
-            Query(page, forKey: "page")
+            Query(name: "page", value: page)
             RequestMethod(.get)
                 .cachePolicy(.disk)
                 .cacheStrategy(.reloadAndValidateCachedData)
@@ -65,7 +65,7 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
         try await DataTask {
             BaseURL("image.tmdb.org")
             Path("t/p/w500\(path)")
-            Headers.Accept(.png)
+            AcceptHeader(.png)
             RequestMethod(.get)
                 .cachePolicy(.disk)
                 .cacheStrategy(.returnCachedDataElseLoad)
