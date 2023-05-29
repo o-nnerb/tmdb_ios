@@ -8,7 +8,7 @@
 import SwiftUI
 import SuperKit
 import NavigationKit
-import Injection
+import Factory
 import SuperUI
 import MoviesApp
 

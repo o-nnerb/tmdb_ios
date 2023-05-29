@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Factory
 
 public protocol MoviesRepositoryProtocol {
 
@@ -16,4 +17,11 @@ public protocol MoviesRepositoryProtocol {
     func getMovies(at page: Int) async throws -> [MovieResponse]
 
     func getPhoto(for path: String) async throws -> Data
+}
+
+extension Container {
+
+    public var moviesRepository: Factory<MoviesRepositoryProtocol> {
+        self { fatalError() }
+    }
 }

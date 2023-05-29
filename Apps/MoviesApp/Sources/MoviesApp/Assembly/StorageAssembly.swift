@@ -6,7 +6,7 @@
 //
 
 import SuperKit
-import Injection
+import Factory
 import MoviesData
 import MoviesStorage
 
@@ -21,9 +21,8 @@ extension StorageAssembly {
 
     func assembleMovies(_ container: Container) {
 
-        container.register(
-            MoviesStorage.MoviesLocalDataSource.init,
-            forKey: MoviesData.MoviesLocalDataSource.self
-        )
+        container.moviesLocalDataSource.register {
+            MoviesStorage.MoviesLocalDataSource()
+        }
     }
 }

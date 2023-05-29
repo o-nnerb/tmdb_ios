@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Injection
+import Factory
 import MoviesDomain
 import MoviesData
 
@@ -21,9 +21,8 @@ extension DataAssembly {
 
     func assembleMovies(_ container: Container) {
 
-        container.register(
-            MoviesRepository.init,
-            forKey: MoviesRepositoryProtocol.self
-        )
+        container.moviesRepository.register {
+            MoviesRepository()
+        }
     }
 }

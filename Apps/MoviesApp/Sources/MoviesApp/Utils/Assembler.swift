@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Injection
+import Factory
 
 enum Assembler {
     static func run(

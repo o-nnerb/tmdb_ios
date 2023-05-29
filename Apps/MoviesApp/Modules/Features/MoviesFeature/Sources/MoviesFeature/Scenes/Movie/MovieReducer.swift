@@ -8,15 +8,15 @@
 import SwiftUI
 import NavigationKit
 import ComposableArchitecture
-import Injection
+import Factory
 import SuperKit
 import MoviesDomain
 import MoviesScenes
 
 struct MovieReducer: ReducerProtocol {
 
-    @Injected var getMovieUseCase: GetMovieUseCaseProtocol
-    @Injected var getPhotoUseCase: GetPhotoUseCaseProtocol
+    @Injected(\.getMovieUseCase) var getMovieUseCase
+    @Injected(\.getPhotoUseCase) var getPhotoUseCase
 
     struct State: Hashable {
         var movie: MovieDetail
@@ -43,12 +43,14 @@ struct MovieReducer: ReducerProtocol {
 
         // MARK: - Destination
         case back
-        case error(Error, RequestID.Type?)
+        case error(Error, CancelID?)
     }
 
-    private enum MovieID: RequestID {}
-    private enum PosterID: RequestID {}
-    private enum BackdropID: RequestID {}
+    enum CancelID {
+        case movie
+        case poster
+        case backdrop
+    }
 
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
@@ -58,7 +60,7 @@ struct MovieReducer: ReducerProtocol {
 
                 return .task { [movie = state.movie] in
                     await loadDetail(movie)
-                }.cancellable(id: MovieID.self, cancelInFlight: true)
+                }.cancellable(id: CancelID.movie, cancelInFlight: true)
 
             case .loadPoster:
                 guard
@@ -71,7 +73,7 @@ struct MovieReducer: ReducerProtocol {
 
                 return .task {
                     await loadPoster(posterPath)
-                }.cancellable(id: PosterID.self, cancelInFlight: true)
+                }.cancellable(id: CancelID.poster, cancelInFlight: true)
 
             case .loadBackdrop:
                 guard
@@ -84,7 +86,7 @@ struct MovieReducer: ReducerProtocol {
 
                 return .task {
                     await loadBackdrop(backdropPath)
-                }.cancellable(id: BackdropID.self, cancelInFlight: true)
+                }.cancellable(id: CancelID.backdrop, cancelInFlight: true)
 
             case .movie(let movie):
                 state.movie = movie
@@ -107,13 +109,13 @@ struct MovieReducer: ReducerProtocol {
                 state.transaction(.error(error))
 
                 switch id {
-                case is MovieID.Type:
+                case .movie:
                     state.isMovieLoading = false
-                case is PosterID.Type:
+                case .poster:
                     state.isPosterLoading = false
-                case is BackdropID.Type:
+                case .backdrop:
                     state.isBackdropLoading = false
-                default:
+                case .none:
                     break
                 }
 
@@ -140,7 +142,7 @@ extension MovieReducer {
             let movie = try await getMovieUseCase(movie.id)
             return .movie(.init(movie))
         } catch {
-            return .error(error, MovieID.self)
+            return .error(error, .movie)
         }
     }
 

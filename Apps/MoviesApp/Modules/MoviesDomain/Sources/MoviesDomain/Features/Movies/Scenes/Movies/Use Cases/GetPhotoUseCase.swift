@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Injection
+import Factory
 
 public protocol GetPhotoUseCaseProtocol {
 
@@ -15,7 +15,7 @@ public protocol GetPhotoUseCaseProtocol {
 
 public struct GetPhotoUseCase {
 
-    @Injected var repository: MoviesRepositoryProtocol
+    @Injected(\.moviesRepository) var repository
 
     public init() {}
 }
@@ -24,5 +24,12 @@ extension GetPhotoUseCase: GetPhotoUseCaseProtocol {
 
     public func callAsFunction(_ path: String) async throws -> Data {
         try await repository.getPhoto(for: path)
+    }
+}
+
+extension Container {
+
+    public var getPhotoUseCase: Factory<GetPhotoUseCaseProtocol> {
+        self { GetPhotoUseCase() }
     }
 }

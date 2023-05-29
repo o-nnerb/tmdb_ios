@@ -8,7 +8,7 @@
 import SwiftUI
 import NavigationKit
 import ComposableArchitecture
-import Injection
+import Factory
 import SuperKit
 import MoviesDomain
 import MoviesScenes

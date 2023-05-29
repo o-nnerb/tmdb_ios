@@ -7,7 +7,7 @@
 
 import SwiftUI
 import MoviesApp
-import Injection
+import Factory
 import SuperKit
 
 @main
@@ -34,9 +34,8 @@ extension MoviesSampleApp {
     static func start() {
         MoviesApp.start()
 
-        Container.shared.register(
-            NavigationBuilder.init,
-            forKey: SuperKit.NavigationBuilder.self
-        )
+        Container.shared.navigationBuilder.register {
+            NavigationBuilder()
+        }
     }
 }

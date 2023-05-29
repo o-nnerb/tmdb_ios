@@ -7,7 +7,7 @@
 
 import Foundation
 import MoviesData
-import Injection
+import Factory
 
 public struct MoviesLocalDataSource {
 

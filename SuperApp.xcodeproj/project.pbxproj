@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		164830AC29C3ECE9005E5E42 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = 164830AB29C3ECE9005E5E42 /* Injection */; };
 		164830AE29C3ECE9005E5E42 /* LoginApp in Frameworks */ = {isa = PBXBuildFile; productRef = 164830AD29C3ECE9005E5E42 /* LoginApp */; };
 		164830B029C3ECE9005E5E42 /* MoviesApp in Frameworks */ = {isa = PBXBuildFile; productRef = 164830AF29C3ECE9005E5E42 /* MoviesApp */; };
 		164830B229C3ECE9005E5E42 /* SuperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 164830B129C3ECE9005E5E42 /* SuperKit */; };
@@ -17,12 +16,12 @@
 		16BA6DBA29BE5ECA000E5274 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BA6DB929BE5ECA000E5274 /* ContentView.swift */; };
 		16BA6DBC29BE5ECB000E5274 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BA6DBB29BE5ECB000E5274 /* Assets.xcassets */; };
 		16BA6DBF29BE5ECB000E5274 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16BA6DBE29BE5ECB000E5274 /* Preview Assets.xcassets */; };
+		7986FC2B2A24D8CD004E2A81 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 7986FC2A2A24D8CD004E2A81 /* Factory */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		164830A529C3EC55005E5E42 /* SuperUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SuperUI; sourceTree = "<group>"; };
 		164830A629C3EC55005E5E42 /* SuperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SuperKit; sourceTree = "<group>"; };
-		164830A729C3EC55005E5E42 /* Injection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Injection; sourceTree = "<group>"; };
 		164830A829C3EC5B005E5E42 /* LoginApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = LoginApp; sourceTree = "<group>"; };
 		164830A929C3EC5B005E5E42 /* MoviesApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MoviesApp; sourceTree = "<group>"; };
 		164830B529C3ED1F005E5E42 /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
@@ -39,9 +38,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				164830B429C3ECE9005E5E42 /* SuperUI in Frameworks */,
+				7986FC2B2A24D8CD004E2A81 /* Factory in Frameworks */,
 				164830B029C3ECE9005E5E42 /* MoviesApp in Frameworks */,
 				164830AE29C3ECE9005E5E42 /* LoginApp in Frameworks */,
-				164830AC29C3ECE9005E5E42 /* Injection in Frameworks */,
 				164830B229C3ECE9005E5E42 /* SuperKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +51,6 @@
 		164830A329C3EC39005E5E42 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				164830A729C3EC55005E5E42 /* Injection */,
 				164830A629C3EC55005E5E42 /* SuperKit */,
 				164830A529C3EC55005E5E42 /* SuperUI */,
 			);
@@ -133,11 +131,11 @@
 			);
 			name = SuperApp;
 			packageProductDependencies = (
-				164830AB29C3ECE9005E5E42 /* Injection */,
 				164830AD29C3ECE9005E5E42 /* LoginApp */,
 				164830AF29C3ECE9005E5E42 /* MoviesApp */,
 				164830B129C3ECE9005E5E42 /* SuperKit */,
 				164830B329C3ECE9005E5E42 /* SuperUI */,
+				7986FC2A2A24D8CD004E2A81 /* Factory */,
 			);
 			productName = SuperApp;
 			productReference = 16BA6DB429BE5ECA000E5274 /* SuperApp.app */;
@@ -167,6 +165,9 @@
 				Base,
 			);
 			mainGroup = 16BA6DAB29BE5ECA000E5274;
+			packageReferences = (
+				7986FC292A24D8CD004E2A81 /* XCRemoteSwiftPackageReference "Factory" */,
+			);
 			productRefGroup = 16BA6DB529BE5ECA000E5274 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -399,11 +400,18 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		164830AB29C3ECE9005E5E42 /* Injection */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Injection;
+/* Begin XCRemoteSwiftPackageReference section */
+		7986FC292A24D8CD004E2A81 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.5;
+			};
 		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
 		164830AD29C3ECE9005E5E42 /* LoginApp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LoginApp;
@@ -419,6 +427,11 @@
 		164830B329C3ECE9005E5E42 /* SuperUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SuperUI;
+		};
+		7986FC2A2A24D8CD004E2A81 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7986FC292A24D8CD004E2A81 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

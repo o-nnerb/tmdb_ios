@@ -6,7 +6,7 @@
 //
 
 import SuperKit
-import Injection
+import Factory
 import MoviesDomain
 
 struct DomainAssembly: Assembly {
@@ -21,24 +21,20 @@ extension DomainAssembly {
 
     func assembleMovies(_ container: Container) {
 
-        container.register(
-            GetPhotoUseCase.init,
-            forKey: GetPhotoUseCaseProtocol.self
-        )
+        container.getPhotoUseCase.register {
+            GetPhotoUseCase()
+        }
 
-        container.register(
-            GetGenreUseCase.init,
-            forKey: GetGenreUseCaseProtocol.self
-        )
+        container.getGenreUseCase.register {
+            GetGenreUseCase()
+        }
 
-        container.register(
-            GetMovieUseCase.init,
-            forKey: GetMovieUseCaseProtocol.self
-        )
+        container.getMovieUseCase.register {
+            GetMovieUseCase()
+        }
 
-        container.register(
-            GetUpcomingMoviesUseCase.init,
-            forKey: GetUpcomingMoviesUseCaseProtocol.self
-        )
+        container.getUpcomingMoviesUseCase.register {
+            GetUpcomingMoviesUseCase()
+        }
     }
 }

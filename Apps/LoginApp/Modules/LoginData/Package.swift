@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "DataKit",
+    name: "LoginData",
     platforms: [.iOS(.v16), .watchOS(.v9), .tvOS(.v16), .macOS(.v13)],
     products: [
         .library(
@@ -13,7 +13,10 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../../../../Modules/Injection"),
+        .package(
+            url: "https://github.com/hmlongco/Factory.git",
+            from: "2.1.5"
+        ),
         .package(path: "../../../../Modules/SuperKit"),
         .package(path: "../LoginDomain")
     ],
@@ -21,7 +24,7 @@ let package = Package(
         .target(
             name: "LoginData",
             dependencies: [
-                "Injection",
+                "Factory",
                 "SuperKit",
                 "LoginDomain"
             ]

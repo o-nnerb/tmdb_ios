@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		163EB71C29BE79D500CBC132 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = 163EB71B29BE79D500CBC132 /* Injection */; };
 		163EB71E29BE79D500CBC132 /* SuperUI in Frameworks */ = {isa = PBXBuildFile; productRef = 163EB71D29BE79D500CBC132 /* SuperUI */; };
 		163EB72029BE7A0900CBC132 /* NavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163EB71F29BE7A0900CBC132 /* NavigationBuilder.swift */; };
 		16651B6629BE7943004B3754 /* MoviesSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16651B6529BE7943004B3754 /* MoviesSampleApp.swift */; };
@@ -16,13 +15,13 @@
 		16651B6D29BE7944004B3754 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16651B6C29BE7944004B3754 /* Preview Assets.xcassets */; };
 		16651B7629BE7988004B3754 /* MoviesApp in Frameworks */ = {isa = PBXBuildFile; productRef = 16651B7529BE7988004B3754 /* MoviesApp */; };
 		16651B7C29BE79C5004B3754 /* SuperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16651B7B29BE79C5004B3754 /* SuperKit */; };
+		7986FC312A24E1ED004E2A81 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 7986FC302A24E1ED004E2A81 /* Factory */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		163EB71F29BE7A0900CBC132 /* NavigationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBuilder.swift; sourceTree = "<group>"; };
 		1648297929C3E79E005F0AE2 /* SuperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SuperKit; path = ../../../Modules/SuperKit; sourceTree = "<group>"; };
 		1648297A29C3E79E005F0AE2 /* SuperUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SuperUI; path = ../../../Modules/SuperUI; sourceTree = "<group>"; };
-		1648297B29C3E79F005F0AE2 /* Injection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Injection; path = ../../../Modules/Injection; sourceTree = "<group>"; };
 		16651B6229BE7943004B3754 /* MoviesSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16651B6529BE7943004B3754 /* MoviesSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesSampleApp.swift; sourceTree = "<group>"; };
 		16651B6729BE7943004B3754 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,9 +36,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				163EB71E29BE79D500CBC132 /* SuperUI in Frameworks */,
-				163EB71C29BE79D500CBC132 /* Injection in Frameworks */,
 				16651B7629BE7988004B3754 /* MoviesApp in Frameworks */,
 				16651B7C29BE79C5004B3754 /* SuperKit in Frameworks */,
+				7986FC312A24E1ED004E2A81 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +93,6 @@
 		16651B7A29BE79B6004B3754 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				1648297B29C3E79F005F0AE2 /* Injection */,
 				1648297929C3E79E005F0AE2 /* SuperKit */,
 				1648297A29C3E79E005F0AE2 /* SuperUI */,
 				16651B7329BE7961004B3754 /* MoviesApp */,
@@ -121,8 +119,8 @@
 			packageProductDependencies = (
 				16651B7529BE7988004B3754 /* MoviesApp */,
 				16651B7B29BE79C5004B3754 /* SuperKit */,
-				163EB71B29BE79D500CBC132 /* Injection */,
 				163EB71D29BE79D500CBC132 /* SuperUI */,
+				7986FC302A24E1ED004E2A81 /* Factory */,
 			);
 			productName = MoviesSampleApp;
 			productReference = 16651B6229BE7943004B3754 /* MoviesSample.app */;
@@ -152,6 +150,9 @@
 				Base,
 			);
 			mainGroup = 16651B5929BE7943004B3754;
+			packageReferences = (
+				7986FC2F2A24E1ED004E2A81 /* XCRemoteSwiftPackageReference "Factory" */,
+			);
 			productRefGroup = 16651B6329BE7943004B3754 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -386,11 +387,18 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		163EB71B29BE79D500CBC132 /* Injection */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Injection;
+/* Begin XCRemoteSwiftPackageReference section */
+		7986FC2F2A24E1ED004E2A81 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.5;
+			};
 		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
 		163EB71D29BE79D500CBC132 /* SuperUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SuperUI;
@@ -402,6 +410,11 @@
 		16651B7B29BE79C5004B3754 /* SuperKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SuperKit;
+		};
+		7986FC302A24E1ED004E2A81 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7986FC2F2A24E1ED004E2A81 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

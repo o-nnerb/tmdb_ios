@@ -6,7 +6,7 @@
 //
 
 import SuperKit
-import Injection
+import Factory
 import MoviesData
 import MoviesNetworking
 
@@ -21,9 +21,8 @@ extension NetworkingAssembly {
 
     func assembleMovies(_ container: Container) {
 
-        container.register(
-            MoviesNetworking.MoviesRemoteDataSource.init,
-            forKey: MoviesData.MoviesRemoteDataSource.self
-        )
+        container.moviesRemoteDataSource.register {
+            MoviesNetworking.MoviesRemoteDataSource()
+        }
     }
 }

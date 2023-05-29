@@ -7,7 +7,7 @@
 
 import Foundation
 import MoviesData
-import Injection
+import Factory
 import RequestDL
 
 public struct MoviesRemoteDataSource {

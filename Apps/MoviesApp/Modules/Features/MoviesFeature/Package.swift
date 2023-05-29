@@ -19,10 +19,12 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/pointfreeco/swift-composable-architecture.git",
-            from: "0.52.0"
+            from: "0.53.2"
         ),
-
-        .package(path: "../../../../../Modules/Injection"),
+        .package(
+            url: "https://github.com/hmlongco/Factory.git",
+            from: "2.1.5"
+        ),
         .package(path: "../../../../../Modules/SuperKit"),
         .package(path: "../../../../../Modules/SuperUI"),
         .package(path: "../../MoviesDomain"),
@@ -34,8 +36,7 @@ let package = Package(
             dependencies: [
                 .product(name: "NavigationKit", package: "navigation-kit"),
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-
-                "Injection",
+                "Factory",
                 "SuperKit",
                 "SuperUI",
                 "MoviesDomain",

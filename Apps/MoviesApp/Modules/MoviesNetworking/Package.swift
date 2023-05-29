@@ -13,12 +13,15 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../../../../Modules/Injection"),
+        .package(
+            url: "https://github.com/hmlongco/Factory.git",
+            from: "2.1.5"
+        ),
         .package(path: "../../../../Modules/SuperKit"),
         .package(path: "../MoviesDomain"),
         .package(path: "../MoviesData"),
         .package(
-            url: "https://github.com/brennobemoura/request-dl.git",
+            url: "https://github.com/request-dl/request-dl.git",
             from: "2.2.0"
         )
     ],
@@ -26,7 +29,7 @@ let package = Package(
         .target(
             name: "MoviesNetworking",
             dependencies: [
-                "Injection",
+                "Factory",
                 "SuperKit",
                 "MoviesDomain",
                 "MoviesData",

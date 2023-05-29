@@ -7,7 +7,7 @@
 
 import SwiftUI
 import NavigationKit
-import Injection
+import Factory
 import SuperKit
 import SuperUI
 import LoginApp

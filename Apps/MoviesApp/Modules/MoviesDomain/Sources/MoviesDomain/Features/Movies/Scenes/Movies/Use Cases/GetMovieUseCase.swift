@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Injection
+import Factory
 
 public protocol GetMovieUseCaseProtocol {
 
@@ -15,7 +15,7 @@ public protocol GetMovieUseCaseProtocol {
 
 public struct GetMovieUseCase {
 
-    @Injected var repository: MoviesRepositoryProtocol
+    @Injected(\.moviesRepository) var repository
 
     public init() {}
 }
@@ -24,5 +24,12 @@ extension GetMovieUseCase: GetMovieUseCaseProtocol {
 
     public func callAsFunction(_ id: Int) async throws -> MovieDetailResponse {
         try await repository.getMovie(id)
+    }
+}
+
+extension Container {
+
+    public var getMovieUseCase: Factory<GetMovieUseCaseProtocol> {
+        self { GetMovieUseCase() }
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Injection
+import Factory
 
 protocol Assembly {
     func assemble(container: Container)

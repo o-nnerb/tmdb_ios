@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		163EB71C29BE79D500CBC132 /* Injection in Frameworks */ = {isa = PBXBuildFile; productRef = 163EB71B29BE79D500CBC132 /* Injection */; };
 		163EB71E29BE79D500CBC132 /* SuperUI in Frameworks */ = {isa = PBXBuildFile; productRef = 163EB71D29BE79D500CBC132 /* SuperUI */; };
 		163EB72029BE7A0900CBC132 /* NavigationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163EB71F29BE7A0900CBC132 /* NavigationBuilder.swift */; };
 		16651B6629BE7943004B3754 /* LoginSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16651B6529BE7943004B3754 /* LoginSampleApp.swift */; };
@@ -16,6 +15,7 @@
 		16651B6D29BE7944004B3754 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16651B6C29BE7944004B3754 /* Preview Assets.xcassets */; };
 		16651B7629BE7988004B3754 /* LoginApp in Frameworks */ = {isa = PBXBuildFile; productRef = 16651B7529BE7988004B3754 /* LoginApp */; };
 		16651B7C29BE79C5004B3754 /* SuperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16651B7B29BE79C5004B3754 /* SuperKit */; };
+		7986FC2E2A24DF44004E2A81 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 7986FC2D2A24DF44004E2A81 /* Factory */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,6 @@
 		16651B7329BE7961004B3754 /* LoginApp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LoginApp; path = ..; sourceTree = "<group>"; };
 		16F3593029C3E8EC00DF845F /* SuperUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SuperUI; path = ../../../Modules/SuperUI; sourceTree = "<group>"; };
 		16F3593129C3E8EC00DF845F /* SuperKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SuperKit; path = ../../../Modules/SuperKit; sourceTree = "<group>"; };
-		16F3593229C3E8EC00DF845F /* Injection */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Injection; path = ../../../Modules/Injection; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +36,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				163EB71E29BE79D500CBC132 /* SuperUI in Frameworks */,
-				163EB71C29BE79D500CBC132 /* Injection in Frameworks */,
+				7986FC2E2A24DF44004E2A81 /* Factory in Frameworks */,
 				16651B7629BE7988004B3754 /* LoginApp in Frameworks */,
 				16651B7C29BE79C5004B3754 /* SuperKit in Frameworks */,
 			);
@@ -94,7 +93,6 @@
 		16651B7A29BE79B6004B3754 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				16F3593229C3E8EC00DF845F /* Injection */,
 				16F3593129C3E8EC00DF845F /* SuperKit */,
 				16F3593029C3E8EC00DF845F /* SuperUI */,
 				16651B7329BE7961004B3754 /* LoginApp */,
@@ -121,8 +119,8 @@
 			packageProductDependencies = (
 				16651B7529BE7988004B3754 /* LoginApp */,
 				16651B7B29BE79C5004B3754 /* SuperKit */,
-				163EB71B29BE79D500CBC132 /* Injection */,
 				163EB71D29BE79D500CBC132 /* SuperUI */,
+				7986FC2D2A24DF44004E2A81 /* Factory */,
 			);
 			productName = LoginSample;
 			productReference = 16651B6229BE7943004B3754 /* LoginSample.app */;
@@ -152,6 +150,9 @@
 				Base,
 			);
 			mainGroup = 16651B5929BE7943004B3754;
+			packageReferences = (
+				7986FC2C2A24DF44004E2A81 /* XCRemoteSwiftPackageReference "Factory" */,
+			);
 			productRefGroup = 16651B6329BE7943004B3754 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -386,11 +387,18 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		163EB71B29BE79D500CBC132 /* Injection */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Injection;
+/* Begin XCRemoteSwiftPackageReference section */
+		7986FC2C2A24DF44004E2A81 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.5;
+			};
 		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
 		163EB71D29BE79D500CBC132 /* SuperUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SuperUI;
@@ -402,6 +410,11 @@
 		16651B7B29BE79C5004B3754 /* SuperKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SuperKit;
+		};
+		7986FC2D2A24DF44004E2A81 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7986FC2C2A24DF44004E2A81 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -2,7 +2,6 @@
 
 It is an iOS app that allows user to check the upcoming movies from TMDb and see some informations about it.
 
-
 ## ⚠️ Under development
 
 This is following the medium [article](https://onnerb.medium.com/architecture-of-a-super-app-swiftui-f3764d924f80)
@@ -15,7 +14,12 @@ Upcoming Movies | Search Upcoming Movies | Movie Detail
 
 ## Libraries
 
-### 1. [RequestDL](https://github.com/brennobemoura/request-dl)
+### 1. [Factory](https://github.com/hmlongco/Factory)
+
+A new approach to Container-Based Dependency Injection for 
+Swift and SwiftUI.
+
+### 1. [RequestDL](https://github.com/request-dl/request-dl)
 
 RequestDL is a library that allows implementing the networking 
 layer using declarative paradigma. 
@@ -29,4 +33,5 @@ availables.
 
 ## Instructions for compilation
 
-This project use Swift Package Manager that check and updates the dependency automatically. No instructions provided.
+This project use Swift Package Manager that check and updates the 
+dependency automatically. No instructions provided.

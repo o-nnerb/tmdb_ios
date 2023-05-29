@@ -7,12 +7,12 @@
 
 import Foundation
 import MoviesDomain
-import Injection
+import Factory
 
 public struct MoviesRepository {
 
-    @Injected var remote: MoviesRemoteDataSource
-    @Injected var local: MoviesLocalDataSource
+    @Injected(\.moviesRemoteDataSource) var remote
+    @Injected(\.moviesLocalDataSource) var local
 
     public init() {}
 }

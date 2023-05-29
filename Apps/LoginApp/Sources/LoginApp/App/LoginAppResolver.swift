@@ -8,12 +8,12 @@
 import SwiftUI
 import SuperKit
 import NavigationKit
-import Injection
+import Factory
 import CoreFeature
 
 public struct LoginAppResolver: AppResolver {
 
-    @Injected var navigationFactory: NavigationBuilder
+    @Injected(\.navigationBuilder) var navigationFactory
 
     private let scene: LoginAppScene
 

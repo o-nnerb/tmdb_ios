@@ -8,14 +8,14 @@
 import SwiftUI
 import NavigationKit
 import ComposableArchitecture
-import Injection
+import Factory
 import SuperKit
 import MoviesDomain
 import MoviesScenes
 
 struct MoviesReducer: ReducerProtocol {
 
-    @Injected var getUpcomingMoviesUseCase: GetUpcomingMoviesUseCaseProtocol
+    @Injected(\.getUpcomingMoviesUseCase) var getUpcomingMoviesUseCase
 
     struct State: Hashable {
         var query: String = ""
@@ -35,13 +35,15 @@ struct MoviesReducer: ReducerProtocol {
 
         case queryChanged(String)
 
-        case error(Error, RequestID.Type?)
+        case error(Error, CancelID?)
 
         case loadPage(Int)
         case appendPage([Movie], Int)
     }
 
-    struct LoadDataID: RequestID {}
+    enum CancelID {
+        case upcomingMovies
+    }
 
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
@@ -74,14 +76,14 @@ struct MoviesReducer: ReducerProtocol {
             case .queryChanged(let query):
                 state.query = query
 
-            case .error(let error, let type):
+            case .error(let error, let cancelID):
                 state.transaction(.error(error))
 
-                switch type {
-                case is LoadDataID.Type:
+                switch cancelID {
+                case .upcomingMovies:
                     state.canLoadMorePages = false
                     state.isLoading = false
-                default:
+                case .none:
                     break
                 }
 
@@ -99,9 +101,9 @@ struct MoviesReducer: ReducerProtocol {
                         let items = try await getUpcomingMoviesUseCase(at: page)
                         return .appendPage(items.map { .init($0) }, page)
                     } catch {
-                        return .error(error, LoadDataID.self)
+                        return .error(error, CancelID.upcomingMovies)
                     }
-                }.cancellable(id: LoadDataID.self, cancelInFlight: true)
+                }.cancellable(id: CancelID.upcomingMovies, cancelInFlight: true)
             }
 
             return .none

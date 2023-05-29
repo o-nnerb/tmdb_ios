@@ -8,12 +8,12 @@
 import SwiftUI
 import SuperKit
 import NavigationKit
-import Injection
+import Factory
 import MoviesFeature
 
 public struct MoviesAppResolver: AppResolver {
 
-    @Injected var navigationFactory: NavigationBuilder
+    @Injected(\.navigationBuilder) var navigationFactory
 
     private let scene: MoviesAppScene
 

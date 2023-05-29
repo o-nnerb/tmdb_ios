@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Injection
+import Factory
 import MoviesDomain
 
 extension MovieItemView {
@@ -14,8 +14,8 @@ extension MovieItemView {
     @MainActor
     class ViewModel: ObservableObject {
 
-        @Injected var getPhotoUseCase: GetPhotoUseCaseProtocol
-        @Injected var getGenreUseCase: GetGenreUseCaseProtocol
+        @Injected(\.getPhotoUseCase) var getPhotoUseCase
+        @Injected(\.getGenreUseCase) var getGenreUseCase
 
         @Published var genre: String?
         @Published var poster: CGImage?

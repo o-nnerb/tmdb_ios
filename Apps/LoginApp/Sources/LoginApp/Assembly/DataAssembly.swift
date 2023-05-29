@@ -6,7 +6,7 @@
 //
 
 import SuperKit
-import Injection
+import Factory
 import LoginDomain
 import LoginData
 

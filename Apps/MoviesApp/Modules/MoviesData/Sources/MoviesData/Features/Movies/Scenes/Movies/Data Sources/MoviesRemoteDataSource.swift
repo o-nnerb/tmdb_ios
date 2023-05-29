@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Injection
+import Factory
 
 public protocol MoviesRemoteDataSource {
 
@@ -17,4 +17,11 @@ public protocol MoviesRemoteDataSource {
     func getMovies(at page: Int) async throws -> [MovieResponseDTO]
 
     func getPhoto(for path: String) async throws -> Data
+}
+
+extension Container {
+
+    public var moviesRemoteDataSource: Factory<MoviesRemoteDataSource> {
+        self { fatalError() }
+    }
 }

@@ -13,7 +13,10 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../../../../Modules/Injection"),
+        .package(
+            url: "https://github.com/hmlongco/Factory.git",
+            from: "2.1.5"
+        ),
         .package(path: "../../../../Modules/SuperKit"),
         .package(path: "../MoviesDomain"),
         .package(path: "../MoviesData")
@@ -22,7 +25,7 @@ let package = Package(
         .target(
             name: "MoviesStorage",
             dependencies: [
-                "Injection",
+                "Factory",
                 "SuperKit",
                 "MoviesDomain",
                 "MoviesData"

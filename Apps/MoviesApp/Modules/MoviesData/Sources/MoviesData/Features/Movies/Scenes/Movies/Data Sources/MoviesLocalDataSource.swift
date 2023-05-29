@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Injection
+import Factory
 
 public protocol MoviesLocalDataSource {
 
@@ -17,4 +17,11 @@ public protocol MoviesLocalDataSource {
     func setPhoto(_ image: Data, forPath path: String) throws
 
     func getPhoto(_ path: String) throws -> Data
+}
+
+extension Container {
+
+    public var moviesLocalDataSource: Factory<MoviesLocalDataSource> {
+        self { fatalError() }
+    }
 }
