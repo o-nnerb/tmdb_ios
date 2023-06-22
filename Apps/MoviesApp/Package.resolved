@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/request-dl/request-dl.git",
       "state" : {
-        "revision" : "c9917055852200cd655198aa8ab6c28f602bf6a1",
-        "version" : "2.2.0"
+        "revision" : "988b093477190a7264e54109093a2bd4213a7b02",
+        "version" : "2.3.0"
       }
     },
     {
@@ -95,8 +95,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-custom-dump",
       "state" : {
-        "revision" : "505aa98716275fbd045d8f934fee3337c82ffbd3",
-        "version" : "0.10.3"
+        "revision" : "3a35f7892e7cf6ba28a78cd46a703c0be4e0c6dc",
+        "version" : "0.11.0"
       }
     },
     {
@@ -131,8 +131,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-nio.git",
       "state" : {
-        "revision" : "2d8e6ca36fe3e8ed74b0883f593757a45463c34d",
-        "version" : "2.53.0"
+        "revision" : "6213ba7a06febe8fef60563a4a7d26a4085783cf",
+        "version" : "2.54.0"
       }
     },
     {
