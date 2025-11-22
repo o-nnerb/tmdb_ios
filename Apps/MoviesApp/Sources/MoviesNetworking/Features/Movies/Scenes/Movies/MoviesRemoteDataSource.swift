@@ -6,9 +6,15 @@
 //
 
 import Foundation
+import SuperKit
 import MoviesData
 import Factory
 import RequestDL
+import Logging
+
+let moviesLogger = Logger(label: "MoviesApp") {
+    OSLogHandler(subsystem: $0, category: "Request")
+}
 
 public struct MoviesRemoteDataSource {
 
@@ -24,7 +30,7 @@ extension MoviesRemoteDataSource: MoviesData.MoviesRemoteDataSource {
             RequestMethod(.get)
                 .cacheStrategy(.returnCachedDataElseLoad)
         }
-        .logInConsole(.debugEnabled)
+        .logger(moviesLogger)
         .keyPath(\.results)
         .decode([GenreResponseDTO].self)
         .extractPayload()
