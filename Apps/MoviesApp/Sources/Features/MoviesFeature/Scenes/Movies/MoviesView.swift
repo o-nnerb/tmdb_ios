@@ -27,6 +27,8 @@ struct MoviesView: View {
                     description: "The current search query typed couldn't find any results"
                 )
             case .items:
+                @Bindable var store = store
+
                 List {
                     if !store.items.isEmpty {
                         Section {

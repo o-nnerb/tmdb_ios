@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieItemView: View {
 
-    @StateObject var viewModel = ViewModel()
+    let viewModel = ViewModel()
 
     let movie: Movie
     let action: () -> Void

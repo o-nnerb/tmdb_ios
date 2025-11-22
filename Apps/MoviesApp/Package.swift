@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "MoviesApp",
-    platforms: [.iOS(.v16), .watchOS(.v9), .tvOS(.v16), .macOS(.v13)],
+    platforms: [.iOS(.v26), .watchOS(.v26), .tvOS(.v26), .macOS(.v26)],
     products: [
         .library(
             name: "MoviesApp",

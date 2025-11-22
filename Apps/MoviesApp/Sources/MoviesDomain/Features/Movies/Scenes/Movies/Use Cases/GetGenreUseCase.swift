@@ -10,6 +10,7 @@ import Factory
 
 public protocol GetGenreUseCaseProtocol: Sendable {
 
+    @concurrent
     func callAsFunction(_ id: Int) async throws -> GenreResponse
 }
 

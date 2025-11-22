@@ -10,6 +10,7 @@ import Factory
 
 public protocol GetUpcomingMoviesUseCaseProtocol: Sendable {
 
+    @concurrent
     func callAsFunction(at page: Int) async throws -> [MovieResponse]
 }
 

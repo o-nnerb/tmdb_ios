@@ -11,15 +11,18 @@ import MoviesDomain
 
 extension MovieItemView {
 
-    @MainActor
-    class ViewModel: ObservableObject {
+    @Observable @MainActor
+    final class ViewModel {
 
+        @ObservationIgnored
         @Injected(\.getPhotoUseCase) var getPhotoUseCase
+
+        @ObservationIgnored
         @Injected(\.getGenreUseCase) var getGenreUseCase
 
-        @Published var genre: String?
-        @Published var poster: CGImage?
-        @Published var isPosterLoading: Bool = false
+        var genre: String?
+        var poster: CGImage?
+        var isPosterLoading: Bool = false
 
         private var currentMovie: Movie?
 
@@ -32,7 +35,7 @@ extension MovieItemView {
             Task {
                 isPosterLoading = true
                 if let path = movie.posterPath, let data = try? await getPhotoUseCase(path) {
-                    poster = getImage(from: data)
+                    poster = await getImage(from: data)
                 } else {
                     poster = nil
                 }
@@ -51,7 +54,8 @@ extension MovieItemView {
 
 extension MovieItemView.ViewModel {
 
-    func getImage(from data: Data) -> CGImage? {
+    @concurrent
+    func getImage(from data: Data) async -> CGImage? {
         guard let ciImage = CIImage(data: data) else {
             return nil
         }

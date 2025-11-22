@@ -10,6 +10,7 @@ import Factory
 
 public protocol GetMovieUseCaseProtocol: Sendable {
 
+    @concurrent
     func callAsFunction(_ id: Int) async throws -> MovieDetailResponse
 }
 

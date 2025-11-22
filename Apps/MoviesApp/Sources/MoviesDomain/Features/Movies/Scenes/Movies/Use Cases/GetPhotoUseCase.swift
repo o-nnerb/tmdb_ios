@@ -10,6 +10,7 @@ import Factory
 
 public protocol GetPhotoUseCaseProtocol: Sendable {
 
+    @concurrent
     func callAsFunction(_ path: String) async throws -> Data
 }
 
