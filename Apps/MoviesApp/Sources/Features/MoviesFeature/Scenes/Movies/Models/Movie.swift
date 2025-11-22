@@ -8,7 +8,7 @@
 import Foundation
 import MoviesDomain
 
-struct Movie: Hashable {
+struct Movie: Hashable, Sendable {
 
     private let model: MovieResponse
 

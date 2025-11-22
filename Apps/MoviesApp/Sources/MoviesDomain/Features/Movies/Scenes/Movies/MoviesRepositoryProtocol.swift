@@ -8,7 +8,7 @@
 import Foundation
 import Factory
 
-public protocol MoviesRepositoryProtocol {
+public protocol MoviesRepositoryProtocol: Sendable {
 
     func getGenre(_ id: Int) async throws -> GenreResponse
 

@@ -11,15 +11,15 @@ import ComposableArchitecture
 @MainActor
 struct MovieView: View {
 
-    let viewStore: ViewStoreOf<MovieReducer>
+    let store: StoreOf<MovieReducer>
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 LazyImage(
-                    image: viewStore.backdrop,
+                    image: store.backdrop,
                     label: Text("Backdrop image"),
-                    isLoading: viewStore.isBackdropLoading
+                    isLoading: store.isBackdropLoading
                 )
                 .scaledToFill()
                 .frame(height: 200)
@@ -28,9 +28,9 @@ struct MovieView: View {
                 VStack(spacing: 16) {
                     HStack(spacing: 8) {
                         LazyImage(
-                            image: viewStore.poster,
+                            image: store.poster,
                             label: Text("Poster image"),
-                            isLoading: viewStore.isPosterLoading
+                            isLoading: store.isPosterLoading
                         )
                         .scaledToFill()
                         .frame(width: 88, height: 128)
@@ -38,9 +38,9 @@ struct MovieView: View {
 
                         HStack(spacing: .zero) {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text(viewStore.movie.name)
+                                Text(store.movie.name)
 
-                                if let genre = viewStore.movie.genre {
+                                if let genre = store.movie.genre {
                                     Text(genre)
                                 }
 
@@ -50,9 +50,9 @@ struct MovieView: View {
                                         .scaledToFit()
                                         .frame(width: 16, height: 16)
 
-                                    Text("\(Int(viewStore.movie.votesAverage))%")
+                                    Text("\(Int(store.movie.votesAverage))%")
 
-                                    Text("(\(viewStore.movie.votesCount))")
+                                    Text("(\(store.movie.votesCount))")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
@@ -64,7 +64,7 @@ struct MovieView: View {
                         }
                     }
 
-                    if let overview = viewStore.movie.overview {
+                    if let overview = store.movie.overview {
                         HStack(spacing: .zero) {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Overview")
@@ -77,7 +77,7 @@ struct MovieView: View {
                         }
                     }
 
-                    if let companies = viewStore.movie.companies {
+                    if let companies = store.movie.companies {
                         HStack(spacing: .zero) {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Production Companies")
@@ -94,14 +94,14 @@ struct MovieView: View {
             }
         }
         .navigationBarBackButtonHidden()
-        .navigationTitle(Text(viewStore.movie.name))
+        .navigationTitle(Text(store.movie.name))
         .toolbar {
             toolbarItems
         }
         .onAppear {
-            viewStore.send(.loadPoster)
-            viewStore.send(.loadBackdrop)
-            viewStore.send(.loadDetail)
+            store.send(.loadPoster)
+            store.send(.loadBackdrop)
+            store.send(.loadDetail)
         }
     }
 }
@@ -112,11 +112,11 @@ extension MovieView {
     var toolbarItems: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             BackButton {
-                viewStore.send(.back)
+                store.send(.back)
             }
         }
 
-        if viewStore.isMovieLoading {
+        if store.isMovieLoading {
             ToolbarItem(placement: .navigationBarTrailing) {
                 ProgressView()
             }
@@ -129,6 +129,6 @@ extension MovieView {
     var releaseDateFormatted: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/YYYY"
-        return dateFormatter.string(from: viewStore.movie.releaseDate) 
+        return dateFormatter.string(from: store.movie.releaseDate) 
     }
 }

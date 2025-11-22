@@ -8,7 +8,7 @@
 import Foundation
 import Factory
 
-public protocol GetUpcomingMoviesUseCaseProtocol {
+public protocol GetUpcomingMoviesUseCaseProtocol: Sendable {
 
     func callAsFunction(at page: Int) async throws -> [MovieResponse]
 }

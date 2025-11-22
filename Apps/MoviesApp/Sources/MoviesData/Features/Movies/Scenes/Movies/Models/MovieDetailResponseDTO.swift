@@ -8,7 +8,7 @@
 import Foundation
 import MoviesDomain
 
-public struct MovieDetailResponseDTO: Decodable {
+public struct MovieDetailResponseDTO: Decodable, Sendable {
 
     public let id: Int
 

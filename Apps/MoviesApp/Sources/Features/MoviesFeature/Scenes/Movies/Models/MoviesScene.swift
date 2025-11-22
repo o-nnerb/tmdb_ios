@@ -13,10 +13,11 @@ typealias MoviesScene = MoviesFeatureScene.Movies
 
 extension MoviesScene {
 
+    @MainActor
     var store: StoreOf<MoviesReducer> {
         .init(
             initialState: .init(),
-            reducer: MoviesReducer()
+            reducer: { MoviesReducer() }
         )
     }
 }

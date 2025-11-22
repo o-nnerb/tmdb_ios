@@ -8,7 +8,7 @@
 import Foundation
 import Factory
 
-public protocol GetPhotoUseCaseProtocol {
+public protocol GetPhotoUseCaseProtocol: Sendable {
 
     func callAsFunction(_ path: String) async throws -> Data
 }

@@ -26,10 +26,10 @@ struct MovieCoordinator: Coordinator {
     }
 
     var body: some View {
-        ObjectConnection(scene, \.store) {
-            WithViewStore($0) {
-                MovieView(viewStore: $0)
-                    .onReceive($0.transaction.publisher) {
+        ObjectConnection(scene, { $0.store }) { store in
+            WithPerceptionTracking {
+                MovieView(store: store)
+                    .onReceive(store.transaction.publisher) {
                         switch $0 {
                         case .back:
                             backScene()

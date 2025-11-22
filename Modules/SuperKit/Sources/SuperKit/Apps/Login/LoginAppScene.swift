@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum LoginAppScene {
+public enum LoginAppScene: Sendable {
     case none
 }
 

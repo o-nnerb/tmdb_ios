@@ -13,11 +13,13 @@ import SuperKit
 import MoviesDomain
 import MoviesScenes
 
-struct MovieReducer: ReducerProtocol {
+@Reducer
+struct MovieReducer: Reducer {
 
     @Injected(\.getMovieUseCase) var getMovieUseCase
     @Injected(\.getPhotoUseCase) var getPhotoUseCase
 
+    @ObservableState
     struct State: Hashable {
         var movie: MovieDetail
         var poster: CGImage?
@@ -30,6 +32,7 @@ struct MovieReducer: ReducerProtocol {
         let transaction = SceneTransaction<MovieDestination>()
     }
 
+    @ObservableState
     enum Action {
         // MARK: - Load data
         case loadDetail
@@ -52,14 +55,14 @@ struct MovieReducer: ReducerProtocol {
         case backdrop
     }
 
-    var body: some ReducerProtocol<State, Action> {
+    var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case .loadDetail:
                 state.isMovieLoading = true
 
-                return .task { [movie = state.movie] in
-                    await loadDetail(movie)
+                return .run { [movie = state.movie, getMovieUseCase] send in
+                    await send(Self.loadDetail(movie, useCase: getMovieUseCase))
                 }.cancellable(id: CancelID.movie, cancelInFlight: true)
 
             case .loadPoster:
@@ -71,8 +74,8 @@ struct MovieReducer: ReducerProtocol {
 
                 state.isPosterLoading = true
 
-                return .task {
-                    await loadPoster(posterPath)
+                return .run { [getPhotoUseCase] send in
+                    await send(Self.loadPoster(posterPath, useCase: getPhotoUseCase))
                 }.cancellable(id: CancelID.poster, cancelInFlight: true)
 
             case .loadBackdrop:
@@ -84,8 +87,8 @@ struct MovieReducer: ReducerProtocol {
 
                 state.isBackdropLoading = true
 
-                return .task {
-                    await loadBackdrop(backdropPath)
+                return .run { [getPhotoUseCase] send in
+                    await send(Self.loadBackdrop(backdropPath, useCase: getPhotoUseCase))
                 }.cancellable(id: CancelID.backdrop, cancelInFlight: true)
 
             case .movie(let movie):
@@ -137,27 +140,27 @@ extension MovieReducer.State {
 
 extension MovieReducer {
 
-    func loadDetail(_ movie: MovieDetail) async -> MovieReducer.Action {
+    static func loadDetail(_ movie: MovieDetail, useCase: GetMovieUseCaseProtocol) async -> MovieReducer.Action {
         do {
-            let movie = try await getMovieUseCase(movie.id)
+            let movie = try await useCase(movie.id)
             return .movie(.init(movie))
         } catch {
             return .error(error, .movie)
         }
     }
 
-    func loadPoster(_ posterPath: String) async -> MovieReducer.Action {
+    static func loadPoster(_ posterPath: String, useCase: GetPhotoUseCaseProtocol) async -> MovieReducer.Action {
         do {
-            let data = try await getPhotoUseCase(posterPath)
+            let data = try await useCase(posterPath)
             return .poster(getImage(from: data))
         } catch {
             return .poster(nil)
         }
     }
 
-    func loadBackdrop(_ backdropPath: String) async -> MovieReducer.Action {
+    static func loadBackdrop(_ backdropPath: String, useCase: GetPhotoUseCaseProtocol) async -> MovieReducer.Action {
         do {
-            let data = try await getPhotoUseCase(backdropPath)
+            let data = try await useCase(backdropPath)
             return .backdrop(getImage(from: data))
         } catch {
             return .backdrop(nil)
@@ -167,7 +170,7 @@ extension MovieReducer {
 
 extension MovieReducer {
 
-    func getImage(from data: Data) -> CGImage? {
+    static func getImage(from data: Data) -> CGImage? {
         guard let ciImage = CIImage(data: data) else {
             return nil
         }

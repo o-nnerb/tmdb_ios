@@ -1,4 +1,4 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 6.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -15,19 +15,19 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/brennobemoura/navigation-kit.git",
-            from: "1.0.0-alpha.4"
+            from: "1.0.0"
         ),
         .package(
             url: "https://github.com/pointfreeco/swift-composable-architecture.git",
-            from: "0.53.2"
+            from: "1.23.1"
         ),
         .package(
             url: "https://github.com/hmlongco/Factory.git",
-            from: "2.1.5"
+            from: "2.5.3"
         ),
         .package(
-            url: "https://github.com/request-dl/request-dl.git",
-            from: "2.3.0"
+            url: "https://github.com/request-dl/request-dl-nio.git",
+            from: "3.1.1"
         ),
         .package(path: "../../Modules/SuperKit"),
         .package(path: "../../Modules/SuperUI")
@@ -65,7 +65,7 @@ let package = Package(
                 "SuperKit",
                 "LoginDomain",
                 "LoginData",
-                .product(name: "RequestDL", package: "request-dl")
+                .product(name: "RequestDL", package: "request-dl-nio")
             ]
         ),
         .target(

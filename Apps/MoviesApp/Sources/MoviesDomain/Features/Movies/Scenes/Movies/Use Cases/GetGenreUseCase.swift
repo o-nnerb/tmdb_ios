@@ -8,7 +8,7 @@
 import Foundation
 import Factory
 
-public protocol GetGenreUseCaseProtocol {
+public protocol GetGenreUseCaseProtocol: Sendable {
 
     func callAsFunction(_ id: Int) async throws -> GenreResponse
 }

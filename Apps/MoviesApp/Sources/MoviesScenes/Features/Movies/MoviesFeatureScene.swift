@@ -9,7 +9,7 @@ import Foundation
 import SuperKit
 import MoviesDomain
 
-public enum MoviesFeatureScene {
+public enum MoviesFeatureScene: Sendable {
     case movies(Movies)
 }
 

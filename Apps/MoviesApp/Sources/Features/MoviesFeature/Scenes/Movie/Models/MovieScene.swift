@@ -16,10 +16,11 @@ struct MovieScene: Hashable {
 
 extension MovieScene {
 
-    var store: Store<MovieReducer.State, MovieReducer.Action> {
+    @MainActor
+    var store: StoreOf<MovieReducer> {
         .init(
             initialState: .init(self),
-            reducer: MovieReducer()
+            reducer: { MovieReducer() }
         )
     }
 }

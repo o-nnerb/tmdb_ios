@@ -8,7 +8,7 @@
 import Foundation
 import MoviesDomain
 
-public struct GenreResponseDTO: Codable {
+public struct GenreResponseDTO: Codable, Sendable {
 
     public let id: Int
     public let name: String

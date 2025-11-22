@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MovieDetailResponse: Hashable {
+public struct MovieDetailResponse: Hashable, Sendable {
 
     public let id: Int
 

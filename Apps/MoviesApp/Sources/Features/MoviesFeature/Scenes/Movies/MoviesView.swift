@@ -11,7 +11,7 @@ import ComposableArchitecture
 @MainActor
 struct MoviesView: View {
 
-    let viewStore: ViewStoreOf<MoviesReducer>
+    let store: StoreOf<MoviesReducer>
 
     var body: some View {
         Group {
@@ -28,24 +28,24 @@ struct MoviesView: View {
                 )
             case .items:
                 List {
-                    if !viewStore.items.isEmpty {
+                    if !store.items.isEmpty {
                         Section {
-                            ForEach(viewStore.items) { item in
+                            ForEach(store.items) { item in
                                 MovieItemView(item) {
-                                    viewStore.send(.submit(item))
+                                    store.send(.submit(item))
                                 }
                                 .onAppear {
-                                    viewStore.send(.loadNextPageIfNeeded(item))
+                                    store.send(.loadNextPageIfNeeded(item))
                                 }
                             }
                         } header: {
-                            if !viewStore.query.isEmpty {
+                            if !store.query.isEmpty {
                                 Text("Results")
                             }
                         }
                     }
 
-                    if viewStore.isLoading {
+                    if store.isLoading {
                         Section {
                             ProgressView()
                                 .frame(maxWidth: .infinity)
@@ -56,11 +56,12 @@ struct MoviesView: View {
         }
         .navigationBarBackButtonHidden()
         .navigationTitle(Text("Upcoming Movies"))
-        .searchable(text: viewStore.binding(get: \.query) {
-            .queryChanged($0)
-        })
+        .searchable(text: .init(
+            get: { store.query },
+            set: { store.send(.queryChanged($0)) }
+        ))
         .onAppear {
-            viewStore.send(.loadData)
+            store.send(.loadData)
         }
     }
 }
@@ -75,11 +76,11 @@ extension MoviesView {
 
     var displayMode: DisplayMode {
         guard
-            !viewStore.isLoading,
-            viewStore.items.isEmpty
+            !store.isLoading,
+            store.items.isEmpty
         else { return .items }
 
-        if !viewStore.query.isEmpty {
+        if !store.query.isEmpty {
             return .notFound
         } else {
             return .empty

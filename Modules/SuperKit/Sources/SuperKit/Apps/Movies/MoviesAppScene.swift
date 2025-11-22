@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MoviesAppScene {
+public enum MoviesAppScene: Sendable {
     case movies(Movies)
 }
 
@@ -23,7 +23,7 @@ extension MoviesAppScene: Hashable {
 
 extension MoviesAppScene {
 
-    public struct Movies: Hashable {
+    public struct Movies: Hashable, Sendable {
 
         public init() {}
     }

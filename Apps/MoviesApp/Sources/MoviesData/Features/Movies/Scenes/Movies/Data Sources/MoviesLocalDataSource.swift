@@ -8,7 +8,7 @@
 import Foundation
 import Factory
 
-public protocol MoviesLocalDataSource {
+public protocol MoviesLocalDataSource: Sendable {
 
     func getGenre(_ id: Int) throws -> GenreResponseDTO
 

@@ -13,10 +13,12 @@ import SuperKit
 import MoviesDomain
 import MoviesScenes
 
-struct MoviesReducer: ReducerProtocol {
+@Reducer
+struct MoviesReducer: Reducer {
 
     @Injected(\.getUpcomingMoviesUseCase) var getUpcomingMoviesUseCase
 
+    @ObservableState
     struct State: Hashable {
         var query: String = ""
         fileprivate var _items: [Movie] = []
@@ -28,6 +30,7 @@ struct MoviesReducer: ReducerProtocol {
         let transaction = SceneTransaction<MoviesDestination>()
     }
 
+    @ObservableState
     enum Action {
         case loadData
         case loadNextPageIfNeeded(Movie)
@@ -45,14 +48,14 @@ struct MoviesReducer: ReducerProtocol {
         case upcomingMovies
     }
 
-    var body: some ReducerProtocol<State, Action> {
+    var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
             case .loadData:
                 guard state.canLoadMorePages && state.items.isEmpty else {
                     break
                 }
-                
+
                 state.page = .zero
                 return .send(.loadPage(1))
 
@@ -92,16 +95,16 @@ struct MoviesReducer: ReducerProtocol {
                 state.page = page
                 state.canLoadMorePages = movies.count == 20
                 state._items.append(contentsOf: movies)
-                
+
             case .loadPage(let page):
                 state.isLoading = true
 
-                return .task {
+                return .run { [getUpcomingMoviesUseCase] send in
                     do {
                         let items = try await getUpcomingMoviesUseCase(at: page)
-                        return .appendPage(items.map { .init($0) }, page)
+                        await send(.appendPage(items.map { .init($0) }, page))
                     } catch {
-                        return .error(error, CancelID.upcomingMovies)
+                        await send(.error(error, CancelID.upcomingMovies))
                     }
                 }.cancellable(id: CancelID.upcomingMovies, cancelInFlight: true)
             }

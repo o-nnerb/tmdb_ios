@@ -8,7 +8,7 @@
 import Foundation
 import Factory
 
-public protocol GetMovieUseCaseProtocol {
+public protocol GetMovieUseCaseProtocol: Sendable {
 
     func callAsFunction(_ id: Int) async throws -> MovieDetailResponse
 }
